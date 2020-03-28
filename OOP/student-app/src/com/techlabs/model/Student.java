@@ -57,5 +57,13 @@ public class Student {
 	public int getStudentCount() {
 		return studentcount;
 	}
+	
+	public static int headcount() {
+		return studentcount;
+	}
+	
+	public static int showId() {
+		return id;
+	}
 
 }
