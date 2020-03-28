@@ -1,57 +1,63 @@
 package com.techlabs.model;
 
-public class Account extends Object {
+public class Account {
 	private int accno;
 	private String name;
 	private double balance;
-	private static int MINIMUM_BALANCE = 500 ;
+	private static int MINIMUM_BALANCE = 500;
 	private static int TOTAL_TRANSACTIONS = 0;
-	
-	/*static {
-		MINIMUM_BALANCE = 500 ;
-		 TOTAL_TRANSACTIONS = 0;
-	}*/
-	
-	public Account(int accno , String name ,double balance) {
+
+	/*
+	 * static { MINIMUM_BALANCE = 500 ; TOTAL_TRANSACTIONS = 0; }
+	 */
+
+	public Account(int accno, String name, double balance) {
 		this.accno = accno;
 		this.name = name;
 		this.balance = balance;
-		
+
 	}
-	
-	public void withdraw(double amt ) {
-		if(balance - amt > MINIMUM_BALANCE) {
-			balance = balance- amt;
+
+	public void withdraw(double amt) {
+		if (balance - amt > MINIMUM_BALANCE) {
+			balance = balance - amt;
 			TOTAL_TRANSACTIONS++;
 		}
 	}
-	
+
 	public void deposit(double amt) {
 		balance = balance + amt;
 		TOTAL_TRANSACTIONS++;
 	}
-	
+
 	public double getBalance() {
 		return balance;
 	}
-	
+
 	public static void setMinimumBalance(int balance) {
 		MINIMUM_BALANCE = balance;
 	}
-	
-	/*public static int getMinimumBalance() {
-		return MINIMUM_BALANCE;
-	}*/
-	
+
+	/*
+	 * public static int getMinimumBalance() { return MINIMUM_BALANCE; }
+	 */
+
 	public static int getTotalTransactions() {
 		return TOTAL_TRANSACTIONS;
 	}
 
-	  public String toString() {
-		  super.toString();
-		String str = super.toString() + "accno" + accno + "\nname: "+ name + "\nbalance: " + balance; 
+	@Override
+	public String toString() {
+		return (super.toString() + "accno" + accno + "\nname: " + name + "\nbalance: " + balance);
+
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
 		
-		  return str;
+		Account acc = (Account) obj;
+		return (accno == acc.accno && name == acc.name && balance == acc.balance);
+		
 	}
 
 }
