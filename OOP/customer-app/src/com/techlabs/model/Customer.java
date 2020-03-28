@@ -4,18 +4,19 @@ public class Customer {
 	private String id  ;
 	private String name;
 	private int orders;
-	private static int count ;
+	private static int incrementid ;
 	
 	
 	static {
-		count = 1000;
+		incrementid = 0;
 		
 	}
 	
 	public Customer(String name , int orders) {
 		this.name = name;
 		this.orders= orders;
-		this.id = "C"+ String.valueOf(++count);
+		incrementid++;
+		this.id = "C"+ (1000 + incrementid);
 		
 	}
 	
