@@ -20,10 +20,10 @@ public class SerializationTest {
 		
 	}
 	
-	public static void doSerialization(Account acc, File f) throws IOException {
+	public static void doSerialization(Account acc, File filename) throws IOException {
 		
 		
-		FileOutputStream file = new FileOutputStream(f); 
+		FileOutputStream file = new FileOutputStream(filename); 
         ObjectOutputStream out = new ObjectOutputStream(file); 
           
         out.writeObject(acc);
