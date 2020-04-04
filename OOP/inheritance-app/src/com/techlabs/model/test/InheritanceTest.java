@@ -30,4 +30,13 @@ public class InheritanceTest {
 		x.eat();
 
 	}
+	
+	public static void case3() {
+		Man x;
+		x = new Boy();
+		x.play();
+		x.read();
+		x.walk();
+
+	}
 }
