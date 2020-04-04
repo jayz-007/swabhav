@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class GameTerminal {
 	private String quit = "no";
-	private boolean endgame;
+	private int endgame;
 
 	public void startGame() {
 		Game newgame = new Game();
@@ -15,10 +15,23 @@ public class GameTerminal {
 			newgame.guessNo(sc.nextInt());
 
 			endgame = newgame.checkGuessedNo();
-			if (endgame == true) {
-				checkUserAnswer();
-				newgame.generateRandomn();
-				newgame.resetGuessMade();
+			switch (endgame) {
+			case 1:
+				System.out.println("Number is greater than actual value");
+				break;
+			case 2:
+				System.out.println("Number is less than actual value");
+				break;
+			case 3:
+				System.out
+						.println("Number is equal to actual value \nNumber of guesses made: " + newgame.getGuessMade());
+			}
+			if (endgame == 3) {
+				{
+					checkUserAnswer();
+					newgame.generateRandomn();
+					newgame.resetGuessMade();
+				}
 			}
 
 		} while (this.quit == "no");
