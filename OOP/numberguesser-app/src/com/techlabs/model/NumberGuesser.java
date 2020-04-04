@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class NumberGuesser {
 	private int guessno;
 	private int randomno;
-	private int endgame;
 	private String quit;
 
 	public void generateRandomn() {
