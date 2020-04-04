@@ -22,23 +22,28 @@ public class Game {
 	public boolean checkGuessedNo() {
 		if (guessno > randomno) {
 			System.out.println("Number is greater than actual value");
-			guessesmade ++;
+			incrementguessMade();
 			return false;
 		}
 		if (guessno < randomno) {
 			System.out.println("Number is less than actual value");
-			guessesmade ++;
+			incrementguessMade();
 			return false;
 		} else if(guessno == randomno) {
-			guessesmade ++;
+		incrementguessMade();
 			System.out.println("Number is equal to actual value \nNumber of guesses made: " + this.guessesmade) ;
 			return true;
 		}
 		return false;
 	}
 	
-	public void incrementguessmade() {
+	public void incrementguessMade() {
 		guessesmade ++;
+	}
+	
+	public void resetGuessMade() {
+		guessesmade = 0;
+		
 	}
 	
 	

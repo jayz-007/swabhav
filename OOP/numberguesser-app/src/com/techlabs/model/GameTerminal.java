@@ -12,14 +12,16 @@ public class GameTerminal {
 		do {
 			System.out.println("Guess the number");
 			Scanner sc = new Scanner(System.in);
-
 			newgame.guessNo(sc.nextInt());
+
 			endgame = newgame.checkGuessedNo();
 			if (endgame == true) {
 				checkUserAnswer();
+				newgame.generateRandomn();
+				newgame.resetGuessMade();
 			}
 
-		} while (quit != "yes");
+		} while (this.quit == "no");
 	}
 
 	public void checkUserAnswer() {
@@ -30,8 +32,10 @@ public class GameTerminal {
 		switch (decission) {
 		case "no":
 			quit = "no";
+			break;
 		case "yes":
 			quit = "yes";
+			break;
 		}
 	}
 
