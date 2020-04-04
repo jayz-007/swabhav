@@ -20,17 +20,15 @@ public class Game {
 	}
 
 	public int checkGuessedNo() {
+		incrementguessMade();
 		if (guessno > randomno) {
 
-			incrementguessMade();
 			return 1;
 		}
 		if (guessno < randomno) {
 
-			incrementguessMade();
 			return 2;
 		} else if (guessno == randomno) {
-			incrementguessMade();
 
 			return 3;
 		}
