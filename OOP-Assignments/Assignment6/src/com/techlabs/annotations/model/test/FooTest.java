@@ -20,7 +20,7 @@ public class FooTest {
 		for (Method methods : m) {
 			if (methods.isAnnotationPresent(MyNeedForRefactor.class)) {
 				MyNeedForRefactor anno = methods.getAnnotation(MyNeedForRefactor.class);
-				System.out.println(methods.getName() + " " + anno.value);  
+				System.out.println(methods.getName() + " " + anno.VALUE);  
 
 			}
 

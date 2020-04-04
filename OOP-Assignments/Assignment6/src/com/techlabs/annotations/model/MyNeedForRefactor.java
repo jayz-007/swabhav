@@ -4,6 +4,6 @@ import java.lang.annotation.Retention;
 
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MyNeedForRefactor {
-	public String value = "Need for refactor";
+	public static String VALUE = "Need for refactor";
 
 }

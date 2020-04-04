@@ -21,12 +21,12 @@ public class SerializationArrayOfObjectsTest {
 		doSerialization(accounts, file);
 	}
 
-	public static void doSerialization(Account[] acc, File f) throws IOException {
+	public static void doSerialization(Account[] accounts, File f) throws IOException {
 
 		FileOutputStream file = new FileOutputStream(f);
 		ObjectOutputStream out = new ObjectOutputStream(file);
 
-		out.writeObject(acc);
+		out.writeObject(accounts);
 
 		out.close();
 		file.close();
