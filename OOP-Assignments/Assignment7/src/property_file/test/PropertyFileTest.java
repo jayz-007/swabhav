@@ -2,24 +2,31 @@ package property_file.test;
 
 import java.util.*;
 import java.io.*;
-import java.util.Properties;
 
 public class PropertyFileTest {
-	public static void main(String args[]) throws IOException {
-		readFile();
-
-	}
-
-
-	public static void readFile() throws IOException {
-		FileReader reader = new FileReader("file.properties");
+	public static void main(String[] args) throws Exception {
 
 		Properties p = new Properties();
-		p.load(reader);
-
-		System.out.println(p.getProperty("user"));
-		System.out.println(p.getProperty("password"));
-
+		InputStream is = new FileInputStream("file.properties");
+		p.load(is);
+		Set<String> attributes = p.stringPropertyNames();
+		
+		readUsingForEachLoop(attributes, p);
+		readUsingIterator(p);
 	}
 
+	public static void readUsingIterator(Properties p) {
+		Iterator keyIterator = p.keySet().iterator();
+		while (keyIterator.hasNext()) {
+			String attribute = (String) keyIterator.next();
+			String value = p.getProperty(attribute);
+			System.out.println( value);
+		}
+	}
+
+	public static void readUsingForEachLoop(Set<String> attributes, Properties p) {
+		for (String attribute : attributes) {
+			System.out.println( p.getProperty(attribute));
+		}
+	}
 }
