@@ -16,10 +16,11 @@ public class FooTest {
 
 	public static void doReflection(Class reflection, Object obj)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		
+		int totaltestcases = 0 ;
 		Method[] methods = reflection.getDeclaredMethods();
 		for (Method method : methods) {
 			if (method.isAnnotationPresent(UnitTestCase.class)) {
+				totaltestcases++;
 				if ((boolean) method.invoke(obj)) {
 					System.out.println(method.getName() + " is passing case");
 				} else
@@ -28,6 +29,7 @@ public class FooTest {
 				System.out.println(method.getName() + " is not a testcase");
 			}
 		}
+		System.out.println("total test cases are : " +totaltestcases);
 	}
 
 }
