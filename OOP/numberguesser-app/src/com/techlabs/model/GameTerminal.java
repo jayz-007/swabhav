@@ -4,16 +4,18 @@ import java.util.Scanner;
 
 public class GameTerminal {
 	private String quit = "no";
-	private int result;
-	private final int GREATER = 1;
-	private final int SMALLER = 2;
-	private final int EQUALS = 3;
+	private String result;
+	private int guess;
+	/*
+	 * private final String GREATER = "HIGH"; private final String SMALLER = "LOW";
+	 * private final String EQUALS = "EQUALS";
+	 */
 
 	public void startGame() {
+		System.out.println("Game has not started");
 		Game newgame = new Game();
-		newgame.generateRandomn();
 		do {
-			guessNo(newgame);
+			setGuess();
 			checkGuessedNum(newgame);
 
 		} while (this.quit == "no");
@@ -37,28 +39,32 @@ public class GameTerminal {
 	}
 
 	public void checkGuessedNum(Game newgame) {
-		result = newgame.checkGuessedNo();
+
+		result = newgame.checkGuessedNo(guess);
 		switch (result) {
-		case GREATER:
+		case "HIGH":
 			System.out.println("Number is greater than actual value");
+			System.out.println("Game in Progress");
 			break;
-		case SMALLER:
+		case "LOW":
 			System.out.println("Number is less than actual value");
+			System.out.println("Game in Progress");
 			break;
-		case EQUALS:
-			System.out.println("Number is equal to actual value \nNumber of guesses made: " + newgame.getGuessMade());
+		case "EQUAL":
+			System.out.println("Number is equal to actual value \nNumber of guesses made: " + newgame.getAttemptsMade()
+					+ "\nScore is " + newgame.getScore());
+			System.out.println("Game has ended");
 
 			checkUserAnswer();
 			newgame.generateRandomn();
-			newgame.resetGuessMade();
-			
+
 		}
 	}
 
-	public void guessNo(Game newgame) {
+	public void setGuess() {
 		System.out.println("Guess the number");
 		Scanner sc = new Scanner(System.in);
-		newgame.guessNo(sc.nextInt());
+		guess = (sc.nextInt());
 
 	}
 
