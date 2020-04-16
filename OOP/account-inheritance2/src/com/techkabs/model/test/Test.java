@@ -70,11 +70,12 @@ public class Test {
 		writeline.write('\n');
 		for (Account account : acc) {
 			writeline.write(account.getAccountType() + "," + account.getAccno() + "," + account.getName() + ","
-					+ account.getBalance() + "," + account.getCurrentDate() + "," + account.getAge()+"\n");
-			writeline.write('\n');
+					+ account.getBalance() + "," + account.getCurrentDate() + "," + account.getAge() + '\t');
 		}
-		writeline.close();
+		
+			writeline.close();
 
+		
 	}
 
 }
