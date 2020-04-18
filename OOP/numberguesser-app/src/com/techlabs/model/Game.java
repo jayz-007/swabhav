@@ -36,6 +36,10 @@ public class Game {
 		
 	}
 	
+	public int getRadnomNum() {
+		return randomNumber;
+	}
+	
 	public int getAttemptsMade() {
 		return attemptsMade;
 	}
@@ -45,5 +49,7 @@ public class Game {
 			return 5;
 		return score;
 	}
+	
+	
 
 }

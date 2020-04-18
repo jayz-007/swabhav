@@ -6,7 +6,7 @@ public class Developer extends Employee {
 
 	public Developer(int id, String name, float basicSalary, String gender) {
 		super(id, name, basicSalary, gender);
-		// TODO Auto-generated constructor stub
+		employeeRole = "developer";//same for manager n devel
 	}
 
 	@Override

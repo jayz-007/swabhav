@@ -7,7 +7,7 @@ public class Manager extends Employee {
 
 	public Manager(int id, String name, float basicsalary, String gender) {
 		super(id, name, basicsalary, gender);
-		// TODO Auto-generated constructor stub
+		employeeRole = "manager";
 	}
 
 	@Override

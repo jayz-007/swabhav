@@ -5,7 +5,10 @@ public class Analyst extends Employee{
 
 	public Analyst(int id, String name, float basicSalary, String gender) {
 		super(id, name, basicSalary, gender);
+		employeeRole = "analyst";
 	}
+	
+	
 
 	@Override
 	public float calculateNetSalary() {
@@ -18,5 +21,7 @@ public class Analyst extends Employee{
 
 		return allowances;
 	}
+
+	
 
 }

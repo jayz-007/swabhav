@@ -7,6 +7,7 @@ public abstract class Employee {
 	private String gender;
 	private double netSalary;
 	private String[] allowances;
+	protected String employeeRole;//this to add and a getter
 
 	public Employee(int id, String name, float basicSalary, String gender) {
 		this.id = id;
@@ -17,6 +18,7 @@ public abstract class Employee {
 		this.allowances= calculateAllowances();
 
 	}
+	
 
 	protected abstract float calculateNetSalary();
 	
@@ -46,4 +48,8 @@ public abstract class Employee {
 	public String[] getAllownaces() {
 		return allowances;
 	}
+	
+	public String getEmployeeRole() {
+		return employeeRole;
+	}//change
 }

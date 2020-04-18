@@ -10,7 +10,7 @@ import com.techlabs.model.Account;
 import com.techlabs.model.CurrentAccount;
 import com.techlabs.model.SavingAccount;
 
-public class Test {
+public class AccountTest {
 	public static void main(String args[]) throws ParseException, IOException {
 		Account acc[] = new Account[5];
 		acc[0] = new SavingAccount(20, "jay", 2000, "12/13/2020", "01/01/1998");
@@ -53,10 +53,21 @@ public class Test {
 	}
 
 	public static Account[] findYoungAccountHolders(Account[] acc, int age) {
-		Account youngest[] = new Account[5];
+		int totalCount = 0;
+
 		for (int i = 0; i < acc.length; i++) {
 			if (age > acc[i].getAge()) {
-				youngest[i] = acc[i];
+				totalCount++;
+
+			}
+		}
+		Account youngest[] = new Account[totalCount];
+		totalCount = 0;
+
+		for (int i = 0; i < acc.length; i++) {
+			if (age > acc[i].getAge()) {
+				youngest[totalCount++] = acc[i];
+
 			}
 
 		}
@@ -72,10 +83,9 @@ public class Test {
 			writeline.write(account.getAccountType() + "," + account.getAccno() + "," + account.getName() + ","
 					+ account.getBalance() + "," + account.getCurrentDate() + "," + account.getAge() + '\t');
 		}
-		
-			writeline.close();
 
-		
+		writeline.close();
+
 	}
 
 }

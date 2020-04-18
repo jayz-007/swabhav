@@ -15,6 +15,7 @@ public class EmployeePolymorphismTest {
 
 		Employee a1 = new Analyst(03, "Analyst", 200000, "male");
 		printInfo(a1);
+		System.out.println();
 	}
 
 	public static void printInfo(Employee emp) {
