@@ -16,7 +16,7 @@ import com.techlabs.model.guitar.Wood;
 
 class InventoryTest {
 	@Test
-	void test_checkPriceIs15000_ForWhatSimonLikes_WithBuilderType_Martin() {
+	void test_getGuitar_ForWhatSimonLikes_WithBuilderType_Martin() {
 		Inventory inventory = new Inventory();
 		boolean expected = false, actual = true;
 
@@ -31,7 +31,7 @@ class InventoryTest {
 	}
 	
 	@Test
-	void test_checkPriceIs15000_ForWhatSimonLikes_WithSerialNum12EW() {
+	void test_getGuitar_ForWhatSimonLikes_WithSerialNum12EW() {
 		Inventory inventory = new Inventory();
 		boolean expected = false, actual = true;
 
@@ -45,7 +45,7 @@ class InventoryTest {
 	}
 	
 	@Test
-	void test_checkPriceIs15000_ForWhatSimonLikes_WithNumberOfStrings18() {
+	void test_getGuitar_ForWhatSimonLikes_WithNumberOfStrings18() {
 		Inventory inventory = new Inventory();
 		boolean expected = false, actual = true;
 

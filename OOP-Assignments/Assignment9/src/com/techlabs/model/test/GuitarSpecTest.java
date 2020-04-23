@@ -12,7 +12,7 @@ import com.techlabs.model.guitar.Inventory;
 import com.techlabs.model.guitar.Type;
 import com.techlabs.model.guitar.Wood;
 
-class DuplicationTest {
+class GuitarSpecTest {
 
 	Inventory inventory = new Inventory();
 	boolean expected = false, actual = true;
@@ -27,7 +27,7 @@ class DuplicationTest {
 	}
 
 	@Test
-	void test_getGuitar_ForWhatSimonLikes_WithStringNumber18() {
+	void test_checkGuitarSpec_ForWhatSimonLikes_WithStringNumber18() {
 		GuitarSpec guitar = setup();
 		if (guitar.getNumStrings() == 18) {
 			expected = true;
@@ -35,9 +35,40 @@ class DuplicationTest {
 		assertEquals(expected, actual);
 
 	}
+	
+	@Test
+	void test_checkGuitarSpec_ForWhatSimonLikes_withTypeAcoustic() {
+		GuitarSpec guitar = setup();
+		if (guitar.getType() == Type.ACOUSTIC) {
+			expected = true;
+		}
+		assertEquals(expected, actual);
+
+	}
+	
+	@Test
+	void test_checkGuitarSpec_ForWhatSimonLikes_WithModelStratocastor() {
+		GuitarSpec guitar = setup();
+		if (guitar.getModel() == "Stratocastor") {
+			expected = true;
+		}
+		assertEquals(expected, actual);
+
+	}
 
 	@Test
-	void test_getGuitar_ForWhatSimoLikes_WithBuilderType_Martin() {
+	void test_checkGuitarSpec_ForWhatSimoLikes_withBackWood_adrinodack() {
+
+		GuitarSpec guitar = setup();
+		if (guitar.getBackWood() == Wood.ADIRONDACK) {
+			expected = true;
+		}
+		assertEquals(expected, actual);
+
+	}
+	
+	@Test
+	void test_checkGuitarSpec_ForWhatSimoLikes_WithBuilderType_Martin() {
 
 		GuitarSpec guitar = setup();
 		if (guitar.getBuilder() == Builder.MARTIN) {
@@ -46,5 +77,4 @@ class DuplicationTest {
 		assertEquals(expected, actual);
 
 	}
-
 }
