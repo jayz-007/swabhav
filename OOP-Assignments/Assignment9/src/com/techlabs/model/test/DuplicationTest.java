@@ -16,19 +16,21 @@ class DuplicationTest {
 
 	Inventory inventory = new Inventory();
 	boolean expected = false, actual = true;
+	GuitarSpec guitar= null;
 
 	@Before
-	public GuitarSpec setup() {
+	public void setup() {
 		inventory.addGuitar("12EW", 15000,
 				new GuitarSpec(Builder.MARTIN, "Stratocastor", Type.ACOUSTIC, 18, Wood.ADIRONDACK, Wood.ALDER));
 		Guitar whatSimonLikes = inventory.getGuitar("12EW");
-		GuitarSpec guitar = whatSimonLikes.getSpec();
-		return guitar;
+	 guitar = whatSimonLikes.getSpec();
+		System.out.println("hello");
+		
 	}
 
 	@Test
 	void test_getGuitar_ForWhatSimonLikes_WithStringNumber18() {
-		GuitarSpec guitar = setup();
+		
 		if (guitar.getNumStrings() == 18) {
 			expected = true;
 		}
@@ -39,7 +41,7 @@ class DuplicationTest {
 	@Test
 	void test_getGuitar_ForWhatSimoLikes_WithBuilderType_Martin() {
 
-		GuitarSpec guitar = setup();
+		
 		if (guitar.getBuilder() == Builder.MARTIN) {
 			expected = true;
 		}

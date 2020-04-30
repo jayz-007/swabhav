@@ -20,4 +20,8 @@ public class Foo {
 		return true;
 	}
 
+	@BeforeEveryUnitTest
+	public void before() {
+		System.out.println("this is before");
+	}
 }
