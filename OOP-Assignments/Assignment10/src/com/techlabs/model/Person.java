@@ -5,16 +5,14 @@ import java.util.Scanner;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public abstract class Person {
+public class Person {
 	private int id;
 	private String address;
 	private Date dob;
-	private Class subclass;
 
-	public Person(int id, String address, String dob,Class subclass) {
+	public Person(int id, String address, String dob) {
 		this.id = id;
 		this.address = address;
-		this.subclass = subclass;
 		this.dob = validateDate(dob);
 		
 
@@ -49,9 +47,5 @@ public abstract class Person {
 
 	public Date getDateOfBirth() {
 		return dob;
-	}
-	
-	public Class getSubClass() {
-		return subclass;
 	}
 }
