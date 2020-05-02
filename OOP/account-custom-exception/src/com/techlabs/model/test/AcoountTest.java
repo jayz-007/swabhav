@@ -1,5 +1,7 @@
 package com.techlabs.model.test;
 
+import java.io.IOException;
+
 import com.techlabs.model.Account;
 import com.techlabs.model.InsufficientFundException;
 
@@ -9,11 +11,14 @@ public class AcoountTest {
 		try {
 			acc.withdraw(600);
 			throw new InsufficientFundException(acc);
+		} catch (IOException e) {
+
 		} catch (InsufficientFundException e) {
-			System.out.println(e.getMessage());
-		} finally {
-			System.out.println("end main");
+
+		} catch (Exception e) {
+
 		}
+
 	}
 
 }
