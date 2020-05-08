@@ -1,6 +1,9 @@
 package com.techlabs.model.crudoperation.test;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 public class LinkedListTest {
 	public static void main(String args[]) {
@@ -18,11 +21,11 @@ public class LinkedListTest {
 
 		}
 		// Update
-			if (fruits.contains("Chickoo")) {
-				fruits.remove("Chickoo");// Delete
+		if (fruits.contains("Chickoo")) {
+			fruits.remove("Chickoo");// Delete
 
-				fruits.add("Apple");
-			}
+			fruits.add("Apple");
+		}
 		System.out.println("After modfiy");
 		for (String fruit : fruits) {
 			System.out.println(fruit);
@@ -32,6 +35,14 @@ public class LinkedListTest {
 		for (String fruit : fruits) {
 			if (fruit.contains("Chickoo"))
 				System.out.println(fruit);
+		}
+
+		List<String> listOfFruits = new ArrayList<String>(fruits);
+		Collections.sort(listOfFruits);
+		System.out.println("After Sorting");
+
+		for (int i = 0; i < fruits.size(); i++) {
+			System.out.println(listOfFruits.get(i));
 		}
 	}
 

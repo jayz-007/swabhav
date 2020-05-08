@@ -1,6 +1,9 @@
 package com.techlabs.model.crudoperation.test;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.List;
 
 public class LinkedHashSetTest {
 	public static void main(String args[]) {
@@ -31,6 +34,15 @@ public class LinkedHashSetTest {
 		for (String fruit : fruits) {
 			if (fruit.contains("Chickoo"))
 				System.out.println(fruit);
+
+		}
+
+		List<String> listOfFruits = new ArrayList<String>(fruits);
+		Collections.sort(listOfFruits);
+		System.out.println("After Sorting");
+
+		for (int i = 0; i < fruits.size(); i++) {
+			System.out.println(listOfFruits.get(i));
 		}
 	}
 
