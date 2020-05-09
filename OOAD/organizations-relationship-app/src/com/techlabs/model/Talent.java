@@ -4,10 +4,10 @@ public class Talent {
 	private int id;
 	private String name;
 	private float cgpa;
-	private Partner partner;
+	private String partner;
 	private String techstack;
 
-	public Talent(int id, String name, float cgpa, Partner partner, String techstack) {
+	public Talent(int id, String name, float cgpa, String partner, String techstack) {
 		this.id = id;
 		this.name = name;
 		this.cgpa = cgpa;
@@ -28,7 +28,7 @@ public class Talent {
 		return cgpa;
 	}
 
-	public Partner getPartner() {
+	public String getPartner() {
 		return partner;
 
 	}
@@ -36,4 +36,5 @@ public class Talent {
 	public String getTechStack() {
 		return techstack;
 	}
+
 }

@@ -28,8 +28,10 @@ public class Organization {
 		partners.add(p);
 	}
 
-	public void addTalent(Talent t) {
+	public void addTalent(Talent t,Partner p) {
 		talents.add(t);
+		if(p!=null)
+			p.addTalent(t);
 	}
 
 	public int partnerCount() {

@@ -8,7 +8,7 @@ import com.techlabs.model.Partner;
 import com.techlabs.model.Talent;
 
 public class Program {
-	public static void main(String args[]) throws ParseException{
+	public static void main(String args[]) throws ParseException {
 		Organization swabhav = new Organization("c81d4e2e-bcf2-11e6-869b-7df92533d2db", "swabhav", "12/25/1996");
 
 		Partner aurionPro = new Partner(23, "Aurion Pro", 23445000, 50);
@@ -20,18 +20,18 @@ public class Program {
 		swabhav.addPartner(microsoft);
 
 		Talent jay = new Talent(11, "Jay", 8.0f, null, "Java");
-		Talent vinit = new Talent(12, "Vinit", 9.0f, google, ".Net");
-		
-		swabhav.addTalent(jay);
-		swabhav.addTalent(vinit);
-		
-		
-				
+		Talent vinit = new Talent(12, "Vinit", 9.0f, google.getName(), ".Net");
+		Talent pawan = new Talent(11, "Jay", 8.0f, aurionPro.getName(), "Java");
 
+		swabhav.addTalent(jay, null);
+		swabhav.addTalent(vinit, google);
+		swabhav.addTalent(pawan, aurionPro);
+
+		printInfo(aurionPro);
 		printInfo(swabhav);
 	}
 
-	public static void printInfo(Organization organization){
+	public static void printInfo(Organization organization) {
 		System.out.println("Organization details are :");
 		System.out.println("Id is :" + organization.getId() + " Name is: " + organization.getName()
 				+ " Registration date is : " + organization.getRegistrationDate());
@@ -49,9 +49,21 @@ public class Program {
 		System.out.println("Talent Details are :");
 		for (Iterator<Talent> t = organization.getTalents(); t.hasNext();) {
 			Talent talent = t.next();
-			System.out.println("Talent id is: " + talent.getId() + " Talent name is: " + talent.getName()
-					+ " Cgpa is :" + talent.getCgpa() + " Talent associated to partner :"
-					+ talent.getPartner().getName() + " techstack is: " + talent.getTechStack());
+			System.out.println("Talent id is: " + talent.getId() + " Talent name is: " + talent.getName() + " Cgpa is :"
+					+ talent.getCgpa() + " Talent associated to partner :" + talent.getPartner() + " techstack is: "
+					+ talent.getTechStack());
+		}
+	}
+
+	public static void printInfo(Partner partner) {
+		System.out.println("Partner name is: " + partner.getName());
+		System.out.println("Talent Details are :");
+		for (Iterator<Talent> t = partner.getTalents(); t.hasNext();) {
+			Talent talent = t.next();
+			System.out.println("Talent id is: " + talent.getId() + " Talent name is: " + talent.getName() + " Cgpa is :"
+					+ talent.getCgpa() + " Talent associated to partner :" + talent.getPartner() + " techstack is: "
+					+ talent.getTechStack());
+
 		}
 	}
 
