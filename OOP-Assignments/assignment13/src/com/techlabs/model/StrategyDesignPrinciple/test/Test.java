@@ -1,8 +1,8 @@
-package com.teclabs.model.StrategyDesignPrinciple.test;
+package com.techlabs.model.StrategyDesignPrinciple.test;
 
-import com.teclabs.model.StrategyDesignPrinciple.Animal;
-import com.teclabs.model.StrategyDesignPrinciple.Bird;
-import com.teclabs.model.StrategyDesignPrinciple.Dog;
+import com.techlabs.model.StrategyDesignPrinciple.Animal;
+import com.techlabs.model.StrategyDesignPrinciple.Bird;
+import com.techlabs.model.StrategyDesignPrinciple.Dog;
 
 public class Test {
 

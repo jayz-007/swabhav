@@ -1,4 +1,4 @@
-package com.teclabs.model.StrategyDesignPrinciple;
+package com.techlabs.model.StrategyDesignPrinciple;
 
 public class Animal {
 	private String name;
