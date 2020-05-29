@@ -1,6 +1,8 @@
 package OCP.solution1;
 
-public class FixedDesposit implements SimpleInterest {
+import OCP.solution1.Festival;
+
+public class FixedDesposit implements ISimpleInterest {
 	private int accno;
 	private String name;
 	private double principle;
@@ -16,11 +18,11 @@ public class FixedDesposit implements SimpleInterest {
 	}
 
 	private float calculateRate() {
-		if (festivalType.toString().equals("Diwali"))
+		if (festivalType.equals(Festival.Diwali))
 			return 0.08f;
-		if (festivalType.toString().equals("Ramzan"))
+		if (festivalType.equals(Festival.Ramzan))
 			return 0.09f;
-		if (festivalType.toString().equals("Normal"))
+		if (festivalType.equals(Festival.Normal))
 			return 0.07f;
 		return 0;
 

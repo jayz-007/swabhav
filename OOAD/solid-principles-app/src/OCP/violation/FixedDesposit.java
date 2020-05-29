@@ -15,13 +15,13 @@ public class FixedDesposit {
 		this.festivalType = festivalType;
 	}
 
-	private float calculateRate() {
-		if (festivalType.toString().equals("Diwali"))
-			return 0.08f;
-		if (festivalType.toString().equals("Ramzan"))
-			return 0.09f;
-		if (festivalType.toString().equals("Normal"))
-			return 0.07f;
+	private double calculateRate() {
+		if (festivalType.equals(Festival.Diwali))
+			return 0.08;
+		if (festivalType.equals(Festival.Ramzan))
+			return 0.09;
+		if (festivalType.equals(Festival.Normal))
+			return 0.07;
 		return 0;
 
 	}
