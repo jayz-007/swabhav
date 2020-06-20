@@ -14,8 +14,7 @@ import com.techlabs.model.ResultType;
 class GameTest {
 	Board board = new Board();
 	ResultAnalyzer resultAnalyzer = new ResultAnalyzer(board);
-	Game newGame = new Game(new Player[] { new Player("Ram", Mark.X), new Player("Shyam", Mark.O) }, board,
-			resultAnalyzer);
+	Game newGame = new Game(new Player[] { new Player("Ram", Mark.X), new Player("Shyam", Mark.O) }, resultAnalyzer);
 
 	@Test
 	void test_checkStatusIs_PROGRESS() {

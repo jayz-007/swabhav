@@ -7,11 +7,12 @@ public class Game {
 	private Board board;
 	private ResultType status;
 
-	public Game(Player players[], Board board, ResultAnalyzer resultAnalyzer) {
+	public Game(Player players[],  ResultAnalyzer resultAnalyzer) {
+		ResultType status;
 		this.currentPlayer = players[0];
 		this.nextPlayer = players[1];
 		this.resultAnalyzer = resultAnalyzer;
-		this.board = board;
+		this.board = resultAnalyzer.getBoard();
 
 	}
 
