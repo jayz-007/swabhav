@@ -10,7 +10,7 @@ public class Test {
 		IAuto audi= factory.make(AutoType.AUDI);
 		audi.start();
 		audi.stop();
-		System.out.println(audi.getClass().getName());
+		System.out.println(audi.getClass());
 		
 	}
 
