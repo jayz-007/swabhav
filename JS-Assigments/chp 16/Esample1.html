@@ -1,0 +1,19 @@
+<script >
+	var person = {
+getName: function () {
+
+return "Name is " + this.firstName + " " + this.lastName;
+}
+};
+var funnyGuy = Object.create(person);
+funnyGuy.firstName = "Conan";
+funnyGuy.lastName = "O'Brien";
+
+var theDude = Object.create(person);
+theDude.firstName = "Jeffrey";
+theDude.lastName = "Lebowski";
+
+var detective = Object.create(person);
+detective.firstName = "Adrian";
+detective.lastName = "Monk";
+</script>

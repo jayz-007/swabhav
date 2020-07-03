@@ -1,0 +1,19 @@
+<script >
+var awesomeSauce = (function () {
+var secretCode = "Zorb!";
+function privateCheckCode(code) {
+if (secretCode == code) {
+alert("You are awesome!");
+} else {
+alert("Try again!");
+}
+}
+
+return {
+checkCode: privateCheckCode
+};
+})();
+
+var foo = Object.create(awesomeSauce);
+alert(awesomeSauce.secretCode)
+</script>
