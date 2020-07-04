@@ -47,20 +47,24 @@ public class FrameClientApp extends JFrame implements ActionListener {
 		this.add(p);
 		this.setVisible(true);
 		p.setBackground(Color.CYAN);
-		
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		winnder.setText("");
 		for (Button button : buttons) {
 			if (button == e.getSource()) {
-				newGame.Play(Integer.parseInt(button.getLabel()));
-				button.setLabel(newGame.getCurrentPlayer().getPlayerMark().toString());
-				setGameStatus();
-				setCurrentPlayer();
-				setWinnder();
+				try {
+					newGame.Play(Integer.parseInt(button.getLabel()));
+					button.setLabel(newGame.getCurrentPlayer().getPlayerMark().toString());
+					setGameStatus();
+					setCurrentPlayer();
+					setWinnder();
+
+				} catch (Exception e2) {
+					winnder.setText("Place already marked");
+				}
 			}
 
 		}
@@ -68,16 +72,16 @@ public class FrameClientApp extends JFrame implements ActionListener {
 	}
 
 	public void setGameStatus() {
-		gameStatus.setText(newGame.getStatus().toString());
+		gameStatus.setText("Game status is :"+ newGame.getStatus().toString());
 	}
 
 	public void setCurrentPlayer() {
-		currentPlayer.setText(newGame.getCurrentPlayer().getPlayerName());
+		currentPlayer.setText("It is "+newGame.getCurrentPlayer().getPlayerName()+"'s turn");
 	}
 
 	public void setWinnder() {
 		if (newGame.getStatus().equals(ResultType.WIN))
-			winnder.setText(newGame.getNextPlayer().getPlayerName());
+			winnder.setText("Winnder is:" + newGame.getNextPlayer().getPlayerName());
 	}
 
 }
