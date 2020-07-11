@@ -39,6 +39,7 @@ public class Employee {
 		for (Employee employee : employees) {
 			details += "\n" + addSpaces(index)  + employee.showXML(index + 1);
 		}
+		details += "\n"+addSpaces(index-1)+"</"+empName+">";
 		return details;
 	}
 	
@@ -47,8 +48,10 @@ public class Employee {
 		for (Employee employee : employees) {
 			details += "\n" + addSpaces(index) + "|->" + employee.show(index + 1);
 		}
+	
 		return details;
 	}
+	
 
 	private String addSpaces(int index) {
 		String spacing = "";
@@ -88,6 +91,10 @@ public class Employee {
 
 	public int getDeptId() {
 		return deptId;
+	}
+	
+	public Set<Employee> getEmployee(){
+		return employees;
 	}
 
 }
