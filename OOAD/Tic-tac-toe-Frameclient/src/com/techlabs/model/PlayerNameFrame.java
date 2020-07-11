@@ -21,8 +21,8 @@ public class PlayerNameFrame extends JFrame {
 	private JTextArea player2 = new JTextArea();
 
 	public PlayerNameFrame() {
-		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
+		panel.setBounds(100,100, 100, 100);
 		JLabel label1 = new JLabel("player 1:");
 		player1 = new JTextArea("\t");
 		JLabel label2 = new JLabel("player 2:");
@@ -32,14 +32,12 @@ public class PlayerNameFrame extends JFrame {
 		button.addActionListener(new Action(this));
 		panel.add(label1);
 		panel.add(player1);
-		frame.add(panel);
 		panel.add(label2);
 		panel.add(player2);
-		frame.add(panel);
-		frame.add(button);
-		frame.setLayout(new FlowLayout());
-		frame.setSize(500, 200);
-		frame.setVisible(true);
+		panel.add(button);
+		add(panel);
+		setSize(500, 200);
+		setVisible(true);
 
 	}
 

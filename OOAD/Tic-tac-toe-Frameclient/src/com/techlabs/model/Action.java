@@ -14,6 +14,7 @@ public class Action implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		new FrameClientApp(frame);
+		frame.setVisible(false);
 		
 	}
 
