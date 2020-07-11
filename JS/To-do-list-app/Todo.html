@@ -1,29 +1,16 @@
-<div id="myDIV" class="header">
+<!DOCTYPE html>
+<Html>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="todo.js"></script>
+<body>
+	<div id="myDIV" class="header">
   <h2>My To Do List</h2>
-  <input type="text" id="myInput" placeholder="Title...">
-  <button onclick="newElement()" class="addBtn">Add</button>
+  <input type="text" id="InputBox" placeholder="Title...">
+  <button onclick="addElement()" class="addBtn">Add</button>
 </div>
 
 <ul id="myUL">
-  
 </ul>
 
-<script >
-	function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
-
- 
-
-  
-  }
-
-</script>
+</body>
+</Html>
