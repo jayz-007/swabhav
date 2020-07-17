@@ -1,6 +1,8 @@
+
+
 ul li:hover {
-	
-  background:#FF0000 ;
+	 padding: 15px 10px 15px 45px;
+  background:#eee ;
 }
 body{
 	background-color: 	#280000 ;
@@ -18,20 +20,43 @@ h2{
 	background: #ddd;
 	position: absolute;
 }
+
 ul li {
-	margin: 5px;
+
+	margin: 50px;
 	color: black;
     position: relative;
   padding: 12px 8px 12px 40px;
   background: #eee;
-  font-size: 18px;
+  font-size: 30px;
   text-align: center;
+
+
 }
 .addBtn:hover {
   background-color: #bbb;
 }
 .close{
-	padding: 12px;
-	background: #888;
-	color: black;
+
+	position: absolute;
+  right: 30px;
+  top: 0;
+  bottom: 0;
+  padding: 12px 16px 12px 16px;
+  border: none;
+  font-size: 30px;
 }
+.close:hover{
+	position: absolute;
+
+  right: 30px;
+  top: 0;
+  bottom: 0;
+  color: red;
+  border: none;
+  font-size: 30px;
+}
+
+
+
+

@@ -1,10 +1,12 @@
 
 var ListOfTodos = document.getElementById("myUL");
 	function addElement() {
+    var div = document.createElement("div");
   var li = document.createElement("li");
   var inputValue = document.getElementById("InputBox").value;
   var t = document.createTextNode(inputValue);
   li.appendChild(t);
+  div.appendChild(li);
   if (inputValue === '') {
     alert("You must write something!");
   } else {
@@ -18,7 +20,7 @@ var ListOfTodos = document.getElementById("myUL");
       var li = this.parentElement;
       li.remove();
     };
-    li.appendChild(btn);  
+    div.appendChild(btn);  
      ListOfTodos.appendChild(li);
 
      for(int i =0;i<ListOfTodos.length;i++){

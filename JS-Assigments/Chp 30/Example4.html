@@ -1,0 +1,17 @@
+<body>
+	
+	<script >
+	document.addEventListener("mousewheel", mouseWheeling, false);
+    document.addEventListener("DOMMouseScroll", mouseWheeling, false);
+
+   function mouseWheeling(e) {
+var scrollDirection = e.wheelDelta || -1 * e.detail;
+if (scrollDirection > 0) {
+alert("Scrolling up! " + scrollDirection);
+} else {
+alert("Scrolling down! " + scrollDirection);
+}
+}
+
+	</script>
+</body>

@@ -1,0 +1,19 @@
+<body>
+	<button >click me</button>
+	<script >
+		var button = document.querySelector("button");
+button.addEventListener("mousedown", mousePressed, false);
+button.addEventListener("mouseup", mouseReleased, false);
+button.addEventListener("click", mouseClicked, false);
+function mousePressed(e) {
+alert("Mouse is down!");
+}
+function mouseReleased(e) {
+alert("Mouse is up!");
+}
+function mouseClicked(e) {
+alert("Mouse is clicked!");
+}
+
+	</script>
+</body>
