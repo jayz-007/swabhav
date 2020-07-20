@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script >
+		var red = document.createElement("BUTTON");
+		red.innerHTML = "RED";
+		red.id = "red";
+		
+		red.addEventListener("click",changeColorRed,false);
+
+		var green = document.createElement("BUTTON");
+		green.innerHTML = "GREEN";
+		green.id = "green";
+		green.addEventListener("click",changeColorGreen,false);
+
+		function changeColorRed() {
+			
+				document.body.style.backgroundColor = "red";			
+		}
+
+		function changeColorGreen(){
+
+				document.body.style.backgroundColor = "green";	
+		}
+		document.body.appendChild(red);
+		document.body.appendChild(green);
+	</script>
+
+</body>
+</html>

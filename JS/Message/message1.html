@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script >
+	var label = document.createElement("text");
+	label.textContent = "Enter Text"
+	var inputbox = document.createElement("textArea");
+	inputbox.addEventListener("keyup",showText);
+	var output = document.createElement("h1");
+	function showText() {
+		var input = inputbox.value;
+		output.textContent = input.toUpperCase();
+
+	}
+	document.body.appendChild(label);
+	document.body.appendChild(inputbox);
+	document.body.appendChild(output);
+</script>
+	
+</body>
+
+</html>
+

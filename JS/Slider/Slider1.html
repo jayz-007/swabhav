@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<input type="range" min="1" max ="100"name="slider" 
+	id="myslider"></input>
+	
+	<script >
+		var slider = document.getElementById("myslider");
+		alert(slider.value);
+		var a = document.createElement("h2");
+		slider.oninput = function(){
+			
+			a.textContent = "Slider value is "+this.value;
+		}
+		document.body.appendChild(a);
+	</script>
+	
+
+</body>
+</html>
