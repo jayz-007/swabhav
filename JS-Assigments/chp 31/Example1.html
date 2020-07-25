@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var textBox = document.createElement("textArea");
+		var element = document.createElement("h1");
+		textBox.addEventListener("keydown",keyDown,false);
+		textBox.addEventListener("keyup",keyUp,false);
+		textBox.addEventListener("keypress",keyPress,false);
+
+		document.body.appendChild(textBox);
+		document.body.appendChild(element);
+
+		function keyDown(){
+			var text = element.textContent;
+			element.textContent = text+" keyDown";
+		}
+		function keyPress(){
+			var text = element.textContent;
+			element.textContent = text+" keyPres";
+		}
+		function keyUp(){
+			var text = element.textContent;
+			element.textContent = text+" keyUp";
+		}
+	</script>
+
+</body>
+</html>

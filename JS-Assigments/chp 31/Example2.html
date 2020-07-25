@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var textBox = document.createElement("textArea");
+		var element = document.createElement("h1");
+		textBox.addEventListener("keypress",keyDown,false);
+		
+
+		document.body.appendChild(textBox);
+		document.body.appendChild(element);
+
+		function keyDown(e){
+			alert(e.charCode);
+		}
+		
+		
+	</script>
+
+</body>
+</html>
