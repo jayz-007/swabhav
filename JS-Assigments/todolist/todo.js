@@ -1,16 +1,16 @@
 var todos = [];
-var completedTodos = 0;
-var uncompletedTodos = 0;
+var completedTodosCount = 0;
+var uncompletedTodosCount = 0;
 
-for(var i=0;i<localStorage.length;i++){
-	var key = localStorage.key(i);
-	var value = localStorage.getItem(key);
-	var li = document.createElement("li");
-		var text = key;
-		var t = document.createTextNode(text);
-		li.appendChild(t);
-		
-		
+for(var i = 0;i<localStorage.length;i++){
+
+
+	const key = localStorage.key(i);
+	const value = localStorage.getItem(key);
+	var li =document.createElement("li");
+	var text = document.createTextNode(key);
+	li.appendChild(text);
+	
 		var btn = document.createElement("BUTTON"); 
         btn.className = "close";  
         btn.innerHTML = " X ";  
@@ -24,31 +24,29 @@ for(var i=0;i<localStorage.length;i++){
     x.addEventListener("change",addCompletedElement);
 
     li.appendChild(btn);
-    li.appendChild(x);  
-    var i = document.getElementById("UncompletedElementsHeader");
-if(value === "uncompletedTodos"){
-	uncompletedTodos ++;
-		document.getElementById("UncompletedElements").appendChild(li);
-	
-	var notCompleted = document.getElementById("UncompletedElementsHeader");
-	
-	
-	notCompleted.textContent = "UnCompleted Todos" + " "+uncompletedTodos;
+    li.appendChild(x); 
+    if(value === "uncompletedTodos"){
+    	uncompletedTodosCount++;
+    	var header = document.getElementById("UncompletedElementsHeader");
+    	header.textContent = "UnCompleted Todos "+uncompletedTodosCount;
+    	document.getElementById("UncompletedElements").appendChild(li);
 
-}
-if(value === "completedTodos"){
-	completedTodos++;
-		document.getElementById("CompletedElement").appendChild(li);
-		var completed = document.getElementById("CompletedElementHeader");
-		completed.textContent = "Completed Todos" + " "+completedTodos;
+    }
+    if (value === "completedTodos") {
+    	completedTodosCount++;
+    	var header = document.getElementById("CompletedElementHeader");
+    	header.textContent = "Completed Todos "+completedTodosCount;
+    	document.getElementById("CompletedElement").appendChild(li);
+    }
 
 }
 
-	}
+
 
 
 
 function addElement(){
+	
 		var li = document.createElement("li");
 		var text = document.getElementById("InputBox").value;
 		var t = document.createTextNode(text);
@@ -57,14 +55,10 @@ function addElement(){
 			alert("You must type something")
 		}
 		else{
-			localStorage.clear();
+			
 			const key = text;
 			const value ="uncompletedTodos";
 			localStorage.setItem(key,value);
-			
-			
-
-			
 		document.getElementById("UncompletedElements").appendChild(li);
 		todos.push(text + " X ")
 		document.getElementById("InputBox").value="";
@@ -84,8 +78,8 @@ function addElement(){
     li.appendChild(x);  
     var i = document.getElementById("UncompletedElementsHeader");
 	
-	uncompletedTodos++;
-	i.textContent = "UnCompleted Todos" + " "+uncompletedTodos;
+	uncompletedTodosCount++;
+	i.textContent = "UnCompleted Todos" + " "+uncompletedTodosCount;
 		
 	}
 	
@@ -111,10 +105,10 @@ function addCompletedElement(text){
 
 	var completed = document.getElementById("CompletedElementHeader");
 	var notCompleted = document.getElementById("UncompletedElementsHeader");
-	completedTodos++;
-	uncompletedTodos--;
-	completed.textContent = "Completed Todos" + " "+completedTodos;
-	notCompleted.textContent = "UnCompleted Todos" + " "+uncompletedTodos;
+	completedTodosCount++;
+	uncompletedTodosCount--;
+	completed.textContent = "Completed Todos" + " "+completedTodosCount;
+	notCompleted.textContent = "UnCompleted Todos" + " "+uncompletedTodosCount;
 
 	var key = element.firstChild.textContent;
 	var value = "completedTodos";
@@ -131,12 +125,12 @@ function revokeCompletedElement(text){
 
 	var notCompleted = document.getElementById("UncompletedElementsHeader");
 	var completed = document.getElementById("CompletedElementHeader");
-	uncompletedTodos++;
-	completedTodos--;
-	notCompleted.textContent = "UnCompleted Todos" + " "+uncompletedTodos;
-	completed.textContent = "Completed Todos" + " "+completedTodos;
+	uncompletedTodosCount++;
+	completedTodosCount--;
+	notCompleted.textContent = "UnCompleted Todos" + " "+uncompletedTodosCount;
+	completed.textContent = "Completed Todos" + " "+completedTodosCount;
 	var key = element.firstChild.textContent;
-	var value = "uncompletedTodos";
+	var value = "uncompletedTodosCount";
 	localStorage.setItem(key,value);
 	
 
@@ -144,10 +138,12 @@ function revokeCompletedElement(text){
 
 
 
+
+
 function deleteElement(){
 	var li = this.parentElement;
 	var text = li.textContent;
-	li.remove();
+	
 	for(var i =0;i<todos.length;i++){
 		
 	
@@ -159,17 +155,17 @@ function deleteElement(){
 	}
 	const key = li.firstChild.textContent;
 	const value = localStorage.getItem(key);
+	
 	if(value === "uncompletedTodos"){
-	uncompletedTodos --;
+	uncompletedTodosCount --;
 	var notCompleted = document.getElementById("UncompletedElementsHeader");
-	notCompleted.textContent = "UnCompleted Todos" + " "+uncompletedTodos;
+	notCompleted.textContent = "UnCompleted Todos" + " "+uncompletedTodosCount;
 
 }
 if(value === "completedTodos"){
-	completedTodos--;
-		
-		var completed = document.getElementById("CompletedElementHeader");
-		completed.textContent = "Completed Todos" + " "+completedTodos;
+	completedTodosCount--;	
+	var completed = document.getElementById("CompletedElementHeader");
+	completed.textContent = "Completed Todos" + " "+completedTodosCount;
 
 }
 
@@ -181,5 +177,7 @@ if(value === "completedTodos"){
 			
 		}
 	}
+
+	li.remove();
    
 }
