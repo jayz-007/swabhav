@@ -16,10 +16,20 @@ const Questions = [{id:1,
 	option:["Lion","Tiger","Fox"],
     answer: "Tiger"
 },
-{id:2, 
+{id:3, 
 	text: "Which is the national bird of India?", 
 	option:["Sparrow","Peacock","Ostrich"],
     answer: "Peacock"
+},
+{id:4, 
+	text: "Which is the national game of India?", 
+	option:["Badminton","Cricket","Hockey"],
+    answer: "Hockey"
+},
+{id:5, 
+	text: "How many union territories India has?", 
+	option:["8","4","3"],
+    answer: "8"
 },
 	
 	]
@@ -81,9 +91,7 @@ function checkCorrectAnswer(answerGiven,correctAnswer){
 	isAnswerGiven = true;	
 }
 
-function checkQuizStatus(){
- 	
- 	
+function checkQuizStatus(){	
  	if(isAnswerGiven == true){ 
  	var form = document.getElementById("question");
  	form.remove();
@@ -102,17 +110,41 @@ else{
  }
 
 function getScore(){
+	var form = document.createElement("result");
+	form.id = "result";
 	var score = document.createElement("h2");
 	score.textContent = "Score is " + correctAnswers;
-	document.body.appendChild(score);
+	form.appendChild(score);
 	var result = document.createElement("h2");
 	
 
 	if(correctAnswers<2){
+		document.body.style.backgroundColor = "red";
 		result.textContent = "Result is "+ "Fail";
 	}
-	else
+	else{
+		document.body.style.backgroundColor = "green";
 		result.textContent="Result is"+" Pass";
+	}
 
-	document.body.appendChild(result);
+	var btn = document.createElement("Button");
+	btn.innerHTML = "Try Again";
+	btn.addEventListener("click",tryAgain,false);
+	form.appendChild(result);
+	form.appendChild(btn);
+
+
+	document.body.appendChild(form);
+}
+
+function tryAgain(){
+	var element = document.getElementById("result");
+	element.remove();
+
+ correctAnswers = 0;
+ currentQuestion = 1;
+ count = 0;
+ document.body.style.backgroundColor = "white";
+getQuestion();
+
 }

@@ -2,6 +2,51 @@ var todos = [];
 var completedTodos = 0;
 var uncompletedTodos = 0;
 
+for(var i=0;i<localStorage.length;i++){
+	var key = localStorage.key(i);
+	var value = localStorage.getItem(key);
+	var li = document.createElement("li");
+		var text = key;
+		var t = document.createTextNode(text);
+		li.appendChild(t);
+		
+		
+		var btn = document.createElement("BUTTON"); 
+        btn.className = "close";  
+        btn.innerHTML = " X ";  
+         
+         btn.addEventListener("click",deleteElement);
+
+    var x = document.createElement("INPUT");
+    x.setAttribute("type", "checkbox");
+    x.className = "check";
+    x.id = "check";
+    x.addEventListener("change",addCompletedElement);
+
+    li.appendChild(btn);
+    li.appendChild(x);  
+    var i = document.getElementById("UncompletedElementsHeader");
+if(value === "uncompletedTodos"){
+	uncompletedTodos ++;
+		document.getElementById("UncompletedElements").appendChild(li);
+	
+	var notCompleted = document.getElementById("UncompletedElementsHeader");
+	
+	
+	notCompleted.textContent = "UnCompleted Todos" + " "+uncompletedTodos;
+
+}
+if(value === "completedTodos"){
+	completedTodos++;
+		document.getElementById("CompletedElement").appendChild(li);
+		var completed = document.getElementById("CompletedElementHeader");
+		completed.textContent = "Completed Todos" + " "+completedTodos;
+
+}
+
+	}
+
+
 
 function addElement(){
 		var li = document.createElement("li");
@@ -12,6 +57,13 @@ function addElement(){
 			alert("You must type something")
 		}
 		else{
+			localStorage.clear();
+			const key = text;
+			const value ="uncompletedTodos";
+			localStorage.setItem(key,value);
+			
+			
+
 			
 		document.getElementById("UncompletedElements").appendChild(li);
 		todos.push(text + " X ")
@@ -63,6 +115,11 @@ function addCompletedElement(text){
 	uncompletedTodos--;
 	completed.textContent = "Completed Todos" + " "+completedTodos;
 	notCompleted.textContent = "UnCompleted Todos" + " "+uncompletedTodos;
+
+	var key = element.firstChild.textContent;
+	var value = "completedTodos";
+	localStorage.setItem(key,value);
+	
 }
 
 function revokeCompletedElement(text){
@@ -78,9 +135,12 @@ function revokeCompletedElement(text){
 	completedTodos--;
 	notCompleted.textContent = "UnCompleted Todos" + " "+uncompletedTodos;
 	completed.textContent = "Completed Todos" + " "+completedTodos;
+	var key = element.firstChild.textContent;
+	var value = "uncompletedTodos";
+	localStorage.setItem(key,value);
+	
+
 }
-
-
 
 
 
@@ -94,6 +154,30 @@ function deleteElement(){
 		if(todos[i]===text){
 			todos.splice(i,1);
 			
+			
+		}
+	}
+	const key = li.firstChild.textContent;
+	const value = localStorage.getItem(key);
+	if(value === "uncompletedTodos"){
+	uncompletedTodos --;
+	var notCompleted = document.getElementById("UncompletedElementsHeader");
+	notCompleted.textContent = "UnCompleted Todos" + " "+uncompletedTodos;
+
+}
+if(value === "completedTodos"){
+	completedTodos--;
+		
+		var completed = document.getElementById("CompletedElementHeader");
+		completed.textContent = "Completed Todos" + " "+completedTodos;
+
+}
+
+	for(var i = 0;i<localStorage.length;i++){
+		const keyValue = localStorage.key(i);
+
+		if (key === keyValue) {
+			localStorage.removeItem(keyValue);
 			
 		}
 	}

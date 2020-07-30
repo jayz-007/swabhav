@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Local Storage</title>
+</head>
+<body>
+	<fieldset>
+		<label>Key :</label>
+		<input id=key type="text" name="key">
+		<label>Value :</label>
+		<input id=value type="text" name="value">
+		<button id=b1>Submit</button>
+	</fieldset>
+	<fieldset>
+		<div id=output1>
+			
+		</div>
+	</fieldset>
+
+	<script type="text/javascript">
+		var keyElement = document.querySelector("#key");
+		var valueElement = document.querySelector("#value");
+		var buttonElement = document.querySelector("#b1");
+		var outputElement = document.querySelector("#output1");
+		buttonElement.onclick = function(){
+			const key = keyElement.value;
+			const value = valueElement.value;
+			
+			if(key && value){
+				localStorage.setItem(key,value);
+				location.reload();
+			}
+			else{
+				alert("Insert Data");
+			}
+		};
+
+		for(let i=0 ;i<localStorage.length;i++){
+			const key = localStorage.key(i);
+			const value = localStorage.getItem(key);
+			outputElement.innerHTML += key+": "+value+"<br/>";
+			
+		}
+	</script>
+</body>
+</html>
