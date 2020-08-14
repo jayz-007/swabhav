@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .circleButton{
+            background-color: #99a09a;
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border-radius: 50%;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="rules">
+        <h1><b><font color="Blue">Blue Ball Game</font> </b></h1>
+        <h3><u><b>Rules</b></u></h3>
+        <ol style="text-align: left">
+            <li><b>Please read the rules of game carefully...</b></li>                        
+            <li><b>Press 'START' to start the Game</b></li>
+            </ol>
+        <ul style="text-align: left">
+            <li>If you guessed ball and the location is frontside of blueball then that ball will become<font color="Green"> Green </font>color ball</li>
+            <li>If you guessed ball and the location is backside of blueball then  that ball will become<font color="Red"> Red</font> color ball</li>
+            <li>If you guessed the right ball then you'll win the game</li>
+        </ul>
+    </div>
+    <button id="startBtn" class="startBtn">Start</button>
+<script>
+    
+        
+    var greenBallsStartPosition = 0;
+    var BlueBallPosition = 0;
+    var numberOfGuesses = 0;
+    var count = 0;
+    const totalGuesses = 15;
+    var guessesReamining = 15;
+    var endGame = false;
+
+    document.getElementById("startBtn").addEventListener("click",startGame);
+   
+    function startGame(){
+       
+    
+    document.body.innerHTML = "";
+
+     greenBallsStartPosition = Math.round(Math.floor(Math.random()*48)+3);
+     
+     BlueBallPosition = greenBallsStartPosition -1;
+    count = 0;
+    numberOfGuesses = 0;
+    endGame = false;
+    
+    var div = document.createElement("div");
+    div.id = "attempts";
+        div.textContent = "Attempts :"+ numberOfGuesses + " guesses Remaaining "+guessesReamining;
+        document.body.appendChild(div);
+    for(var i =1;i<=50;i++){
+        
+        //var div = document.createElement("div");
+        
+            count++;
+            var btn = document.createElement("button");;
+        btn.textContent = count;
+        btn.addEventListener("click",changeBallColor);
+        btn.id =count;
+        btn.className = "circleButton";
+        document.body.appendChild(btn);
+        
+        //div.appendChild(btn)
+        
+            
+    }
+    }
+
+    function showEndGameWindow(){
+        document.body.innerHTML = "";
+        var h2 = document.createElement("h2");
+        h2.textContent = "Thank You for playing!"
+        document.body.appendChild(h2);
+    }
+
+    function incrementCount(){
+        numberOfGuesses++; 
+        guessesReamining --; 
+        var attemptsMade = document.querySelector("#attempts");
+        attemptsMade.textContent = "Attempts :"+numberOfGuesses + " gueesses Remaining "+guessesReamining;    
+    }
+
+    function checkEndGame(btn){
+        if(btn == BlueBallPosition){
+            alert("you have won");
+            endGame = true;
+        }
+        if(numberOfGuesses>totalGuesses-1){
+            alert("reached max");
+            endGame = true
+           
+        }
+        if(endGame == true){
+            let buttons = document.querySelectorAll(".circleButton");
+           buttons.forEach((button) =>{
+               button.removeEventListener("click",changeBallColor);
+               var b = document.createElement("button");
+
+              
+               
+
+           });
+           var element = document.createElement("h2");
+               element.textContent = "Do you want ot play again?";
+               document.body.appendChild(element);
+               var yesButton = document.createElement("button");
+               yesButton.addEventListener("click",startGame);
+               yesButton.textContent = "yes";
+               document.body.appendChild(yesButton);
+               var noButton = document.createElement("button");
+               noButton.addEventListener("click",showEndGameWindow);
+               noButton.textContent = "no";
+              document.body.appendChild(noButton);
+        }
+    }
+
+    
+    
+ 
+
+    function changeBallColor(){
+        var btn = this.id;
+        
+        if(this.id <BlueBallPosition){
+            this.style.background = "red";
+        }
+        if(this.id == BlueBallPosition){
+            this.style.background = "blue";
+        }
+        if(this.id > BlueBallPosition){
+            this.style.background = "green";
+        }
+        
+       incrementCount();
+       checkEndGame(btn);
+      
+    }
+
+  
+
+   
+   
+    
+</script>    
+</body>
+</html>

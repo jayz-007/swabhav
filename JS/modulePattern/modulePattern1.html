@@ -1,0 +1,33 @@
+<script>
+    function makeEmployee(){
+        var emp = {}
+            var _id , _name;
+            emp.setId = function(id){
+                if(id>0){
+                    _id = id;
+                }
+                else{
+                    alert("Enter valid id");
+                }
+
+            }
+            emp.setName = function(name){
+                _name = name;
+            }
+
+            emp.getDetails = function(){
+                return("Id :"+_id+"Name :"+_name);
+            }
+           return emp; 
+
+        }
+
+        var e1 = makeEmployee();
+        e1.setId(20);
+        e1.setName("jay");
+
+        console.log(e1.getDetails());
+
+        
+    
+</script>

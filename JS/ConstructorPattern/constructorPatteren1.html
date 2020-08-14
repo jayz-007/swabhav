@@ -1,0 +1,29 @@
+<script>
+    function Student(id ,name ){
+        this.id = id;
+        this.name = name;
+        var foo = "this is foo";
+       
+
+        this.getString = function(){
+            return(" Id is : "+this.id+" Name is: "+this.name);
+        }
+    }
+//case 1
+    var s1 = new Student(1,"jay");
+    var s2 = new Student(2,"rahul");
+    
+
+    console.log(s1);
+    console.log(s2);
+
+    console.log(s1.getString());
+    console.log(s2.getString());
+
+//case 2
+    console.log(s1.foo);    
+
+//case 3
+    var s3 = Student(3,"xyz");
+    console.log(s3);
+</script>

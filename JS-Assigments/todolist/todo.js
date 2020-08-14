@@ -33,6 +33,7 @@ for(var i = 0;i<localStorage.length;i++){
 
     }
     if (value === "completedTodos") {
+    	x.checked = true;
     	completedTodosCount++;
     	var header = document.getElementById("CompletedElementHeader");
     	header.textContent = "Completed Todos "+completedTodosCount;
@@ -130,7 +131,7 @@ function revokeCompletedElement(text){
 	notCompleted.textContent = "UnCompleted Todos" + " "+uncompletedTodosCount;
 	completed.textContent = "Completed Todos" + " "+completedTodosCount;
 	var key = element.firstChild.textContent;
-	var value = "uncompletedTodosCount";
+	var value = "uncompletedTodos";
 	localStorage.setItem(key,value);
 	
 
@@ -155,8 +156,10 @@ function deleteElement(){
 	}
 	const key = li.firstChild.textContent;
 	const value = localStorage.getItem(key);
+
 	
 	if(value === "uncompletedTodos"){
+		
 	uncompletedTodosCount --;
 	var notCompleted = document.getElementById("UncompletedElementsHeader");
 	notCompleted.textContent = "UnCompleted Todos" + " "+uncompletedTodosCount;

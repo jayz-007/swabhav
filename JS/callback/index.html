@@ -1,0 +1,20 @@
+<script>
+    function squareEvenNo(no,callBackFn){
+        if(no%2==0){
+            callBackFn(no*no);
+            
+
+        }
+        else{
+            callBackFn("error "+ no+" not even");
+        }
+    }
+
+    function Display(result){
+        alert(result);
+    }
+
+  setTimeout(function(){
+    squareEvenNo(10,Display);
+  },3000 );
+</script>

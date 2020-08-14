@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+ <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>   
+</head>
+<body>
+	<div id="dialog">hey this is dialog box</div>
+	<button id="btn">Click me</button>
+	<script type="text/javascript">
+		$(function () {
+			$("#dialog").dialog({
+		autoOpen : false,	
+		});
+
+		$("#btn").click(function() {
+			$("#dialog").dialog("open");
+			return false;
+		});
+		});
+	</script>
+</body>
+</html>

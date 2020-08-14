@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<style> 
+        table { 
+            margin: 25px 0; 
+            width: 200px; 
+        } 
+  
+        table th, table td { 
+            padding: 10px; 
+            text-align: center; 
+        } 
+  
+        table, th, td { 
+            border: 1px solid; 
+        } 
+    </style> 
+</head>
+<body>
+	<button >click me</button>
+	<table>
+		<thead>List of Employees</thead>
+		<tbody>
+			<tr>
+				<td>Name</td>
+			</tr>
+		</tbody>
+	</table>
+<script >
+	$(document).ready(function() {
+		$("button").click(function () {
+			$.ajax({
+				url : "https://swabhav-tech.firebaseapp.com/emp.txt",
+				dataType : "text",
+				success : function(data){
+					alert("establish connection");
+
+				}
+				
+				
+			});
+		});
+	});
+</script>
+
+</body>
+</html>

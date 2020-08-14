@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title> Login Page</title>
+    </head>
+    <body>
+        <form action="auth.php" onsubmit="return validateInput()" method="GET">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" ><br>
+
+            <label for="password">password</label>
+            <input type="password"  id="password" name="password" >
+            
+            <input type="submit" id="submit">
+            </form>
+            <script>
+               
+
+                function validateInput(){
+                    var name = document.getElementById("name");
+                    if(name.value == ''){
+                        alert("you must type something");
+                        return false;
+                    }
+                    var name = document.getElementById("password");
+                    if(name.value == ''){
+                        alert("you must type something");
+                        return false;
+                    }
+                }
+            </script>
+           
+    </body>
+</html>

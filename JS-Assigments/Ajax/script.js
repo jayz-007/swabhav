@@ -37,11 +37,21 @@ function popHandler(){
         let obj = JSON.parse(this.responseText);
         console.log(obj.data);
         var list = document.querySelector("#list");
-        var str = "";
+       
         for(key in obj.data){
-            str += obj.data[key].employee_name + "</br>";
+             var name = obj.data[key].employee_name   ;
+           var age =+ obj.data[key].employee_age 
+            markup = "<tr><td> "  
+                    + name + "</td><td>"+age+ "</td></tr>"; 
+                tableBody = $("table tbody"); 
+                tableBody.append(markup); 
+                 
         }
-        list.innerHTML = str;
+         
+           
+                
+           
+          
     }
     xhr.send();
 }

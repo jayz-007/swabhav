@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+</head>
+<body>
+	<button id="click">Click to hide</button>
+	<button id="dbclick">dbClick for fade in</button>
+	<button id="mouseleabe">mouse Leave</button>
+	<button id="mouseCenter"> mouse Enter to animate</button>
+	<button id="showClick">click to show</button>
+	
+
+	<div id="effect" style=" padding: 10px ; background: red">Hey these r the effects </div>
+	<script type="text/javascript">
+		$("#click").click(function () {
+			$("#effect").hide();
+		
+		});
+		$("#showClick").click(function () {
+			$("#effect").show();
+		
+		});
+		$("#mouseleabe").mouseleave(function(){
+			$("#effect").slideUp();
+		});
+		
+		$("#dbclick").dblclick(function(){
+			$("#effect").fadeIn();
+		});
+
+		$("#mouseCenter").mouseenter(function(){
+			$("#effect").animate({
+				height : "40px",
+				width : "40px"
+			});
+		});
+
+		
+
+	</script>
+
+</body>
+</html>

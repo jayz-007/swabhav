@@ -1,0 +1,20 @@
+<script>
+    //initialize variables at the top
+    var display2 = function (no){
+        console.log(no*no);
+    }
+    function square(no,callbackfn){
+        console.log("squaring value");
+        callbackfn(no*no);
+
+    }
+    square(5,display1);
+    square(5,display2);
+
+    function display1(no){
+        console.log(no*no);
+    }
+
+    
+
+</script>

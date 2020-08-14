@@ -1,0 +1,21 @@
+<script>
+    setTimeout(function(){
+        console.log("After 2 seconds")
+    },2000);
+
+    setTimeout(function(){
+        displayAlert();
+    },4000);
+    setTimeout(function(){
+        displayinHtml();
+    },8000);
+
+    function displayAlert(){
+        console.log("after 4 seconds in alert");
+
+    }
+
+    function displayinHtml(){
+        console.log("after 8 seconds in html");
+    }
+</script>

@@ -1,0 +1,36 @@
+<script>
+    function Employee(){
+        var _id, _firstName, _lastName;
+        this.setId = function(id){
+            if(id>0){
+                _id = id;
+            }
+            else{
+                alert("Id must be more than 1 character");
+            }
+        }
+        this.getId = function(){
+            return _id;
+        }
+        this.setFirstName = function(firstName){
+            _firstName = firstName;
+        }
+        this.setLastName = function(lastName){
+            _lastName = lastName;
+        }
+        this.getFullName = function(){
+            return (_firstName+" "+_lastName).toUpperCase();
+        }
+    }
+
+    var emp1 = new Employee();
+    emp1.setId(1001);
+    emp1.setFirstName("Sachin");
+    emp1.setLastName("Tendulkar");
+
+    console.log(emp1.getFullName());
+    console.log(emp1);
+    var emp2 = new Employee();
+    console.log(emp2);
+
+</script>

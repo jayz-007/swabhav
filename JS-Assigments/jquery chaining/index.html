@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Example of jQuery Method Chaining</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    $(".start").click(function(){
+        $("p").animate({width: "100%"}).animate({fontSize: "46px"}).animate({borderWidth: 30}).css({color : "green"}).css({background : "red"});
+    });
+    $(".reset").click(function(){
+        $("p").removeAttr("style");
+    });
+});  
+</script>
+</head>
+<body>
+    <p>Hello World!</p>
+    <button type="button" class="start">Start Chaining</button>
+    <button type="button" class="reset">Reset</button>
+</body>
+</html>

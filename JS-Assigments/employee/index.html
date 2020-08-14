@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<style> 
+        table { 
+            margin: 25px 0; 
+            width: 300px; 
+        } 
+  
+        table th, table td { 
+            padding: 30px; 
+            text-align: center; 
+        } 
+  
+        table, th, td { 
+            border: 1px solid; 
+        } 
+    </style> 
+</head>
+<body>
+	<button >click me</button>
+	<div>
+	<table>
+		<thead>List of Employees</thead>
+		<tbody>
+			<tr>
+				<td>Id</td>
+				<td>Name</td>
+				<td>Role</td>
+				<td>Manager id</td>
+				<td>Date of birth</td>
+				<td>salary</td>
+				<td>mid</td>
+				<td>dept id</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<script >
+	$(document).ready(function() {
+		$("button").bind("click",getEmployyes);
+	});
+
+	function getEmployyes(){
+		$.ajax({
+				url : "demo.txt",
+				dataType : "text",
+				success : function(data){
+					var employees = data.split(/ \r?\n|\r/);
+					for(var i =0 ; i<employees.length;i++){
+						var employee = employees[i].split(",");
+						var markup = "<tr>"
+						for(var k= 0 ;k<employee.length;k++){
+							markup += "<td>" +employee[k] +"</td>"
+						}
+						markup += "</tr>";
+						$("tbody").append(markup);
+					}
+
+				}
+				
+				
+			});
+
+	}
+
+
+</script>
+
+</body>
+</html>
