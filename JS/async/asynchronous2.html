@@ -1,0 +1,17 @@
+<script>
+    function doSomeIOOperatiion(input,callback){
+       setTimeout(function(){
+        var data = Math.random()*input;
+        callback(data);
+       },0)
+    }
+
+    doSomeIOOperatiion(10,function(r){
+        console.log("Result is "+ r);
+
+    })
+
+    console.log("End of program");
+
+
+</script>

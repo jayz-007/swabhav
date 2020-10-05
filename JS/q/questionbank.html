@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Bank</title>
+    <style>
+        canvas{
+            border: 2px solid #333;
+            margin: 2rem auto;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@1.0.1/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <button id="startButton">Start</button>
+    <script>
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET","questions.json",true);
+    xhr.onload = function() {
+        var questions = JSON.parse(this.responseText);
+        console.log(questions);
+        var optionMark = false;
+        var currentQuestion = 1;
+        var correctAnswers = 0;
+        var count = 0;
+        
+        var startButton = document.querySelector("#startButton");
+        startButton.addEventListener("click",start,false);
+
+
+        function start(e){
+            this.remove();
+            getQuestions();    
+        }
+
+        function getQuestions(e){
+            var questionElement = document.createElement("question");
+            questionElement.id = "question";
+            var question = questions[count];
+            count++;
+            var questionIndex = document.createElement("h2");
+            questionIndex.textContent = "Question "+currentQuestion+"/"+questions.length;
+            questionElement.appendChild(questionIndex);
+            var questionText = document.createElement("h2");
+            questionText.textContent = question.id+"."+question.text;
+            questionElement.appendChild(questionText);
+        
+            
+            for(var i=0; i<question.option.length; i++){
+                var options = document.createElement("li");
+                var text = document.createTextNode(question.option[i]);
+                inputElement = document.createElement("input");
+                inputElement.setAttribute("type","radio");
+                inputElement.setAttribute("name",question.id);
+                inputElement.onclick = function(){
+                    checkAnswer(this.parentElement.textContent,question.answer);
+                }
+                var btn = document.createElement("Button");
+                btn.innerHTML = "Next";
+                btn.addEventListener("click",getStatus,false);
+                var btn2 = document.createElement("Button");
+                btn2.innerHTML = "Previous";
+                if(count>1){
+                    btn2.addEventListener("click",getPreviousQuestion,false);
+                }
+                options.appendChild(inputElement);
+                options.appendChild(text);
+                questionElement.appendChild(options);
+
+            
+            
+            }
+            questionElement.appendChild(btn2);
+            questionElement.appendChild(btn);
+            
+            document.body.appendChild(questionElement);
+        
+            
+        }
+
+        function getPreviousQuestion(){
+            var questionElement = document.querySelector("#question");
+            questionElement.remove();
+            count = count-2;
+            currentQuestion--;
+            getQuestions();
+        }
+
+        function checkAnswer(markOption,correctOption){
+            if(markOption === correctOption)
+                correctAnswers++;
+
+            optionMark = true;	
+        }
+
+        function getStatus(){
+            if(optionMark == true){ 
+                var questionElement = document.querySelector("#question");
+                questionElement.remove();
+                currentQuestion++
+                if(currentQuestion <= questions.length){
+                    
+                    getQuestions();
+                }
+                else 
+                    getResult();
+            }
+            else{
+                alert("Please mark the option");
+            }
+
+            }
+
+        function getResult(e){
+            var score = document.createElement("h2");
+            score.textContent = "Score = " + correctAnswers;
+            document.body.appendChild(score);
+            var result = document.createElement("h2");
+            
+
+            if(correctAnswers<3){
+                result.textContent = "Result = Failed";
+            }
+            else{
+                result.textContent="Result = Passed";
+            }
+            document.body.appendChild(result);
+            $(document).ready(function(){
+                var canvas = document.createElement("canvas");
+                var ctx = canvas.getContext("2d");
+                canvas.width = 500;
+                canvas.height = 300;
+                var data =[
+                    {
+                        value:correctAnswers,
+                        color: "green",
+                        label: "Correct"
+                    },
+                    {
+                        value:questions.length - correctAnswers,
+                        color: "red",
+                        label: "Wrong"
+                    }
+                ];
+                var piechart = new Chart(ctx).Pie(data);
+                document.body.appendChild(canvas);
+            });
+
+        } 
+    }
+    xhr.send();
+
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,1 @@
+insert into regions values(1,'asia'),(2,'europe'),(3,'Saudi Arabia');

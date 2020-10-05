@@ -24,20 +24,11 @@ function Questions(id,text,options,answer){
 	
 
 }
+}
 
 var QuestionBankload = [];
 
-const xhr = new XMLHttpRequest();
-xhr.open("GET","questions.json",true);
-xhr.onload = function() {
-	var questionBank = JSON.parse(this.responseText);
-	console.log(questions);
-	for (var i=0;i<questions.length;i++){
-		var question = new Questions(questionBank.id,questionBank.text,questionBank.option,questionBank.answer);
-		QuestionBankload.push(question);
-	}
-}
-xhr.send();
+
 
 var btn = document.getElementById("startTest");
 btn.addEventListener("click",startTest);
@@ -83,6 +74,17 @@ var isAnswerGiven = false;
 */
 function startTest(){
 	this.remove();
+	const xhr = new XMLHttpRequest();
+xhr.open("GET","questions.json",true);
+xhr.onload = function() {
+	var questionBank = JSON.parse(this.responseText);
+	console.log(questionBank);
+	for (var i=0;i<questionBank.length;i++){
+		var question = new Questions(questionBank.id,questionBank.text,questionBank.option,questionBank.answer);
+		QuestionBankload.push(question);
+	}
+}
+xhr.send();
 	getQuestion();    
  }
 
@@ -92,24 +94,24 @@ function startTest(){
  	answerIsAnswerGiven = false;
  	var form = document.createElement("question");
  	form.id = "question";
-	var question = Questions[count];
+	var question = QuestionBankload[count];
 	count++;
 	var i = document.createElement("h2");
-	i.textContent = "Question "+currentQuestion+" of "+Questions.length;
+	i.textContent = "Question "+currentQuestion+" of "+QuestionBankload.length;
 	form.appendChild(i);
 	var questionText = document.createElement("h2");
-	questionText.textContent = question.id+"."+question.text;
+	questionText.textContent = question.getId()+"."+question.text;
     form.appendChild(questionText);
    
     
-    for(var i =0;i<question.option.length;i++){
+    for(var i =0;i<question.getOptions.length;i++){
      var options = document.createElement("li");
-     var text = document.createTextNode(question.option[i]);
+     var text = document.createTextNode(question.getOptions()[i]);
      var theInput = document.createElement("input");
      theInput.setAttribute("type","radio");
      theInput.setAttribute("name",question.id);
      theInput.onclick = function(){
-     	checkCorrectAnswer(this.parentElement.textContent,question.answer,question.answerGivenflag);
+     	checkCorrectAnswer(this.parentElement.textContent,question.getAnswer(),question.getCorrectAnswerrGiven(),question);
      }
      var btn = document.createElement("Button");
      btn.innerHTML = "nextQuestion";
@@ -131,17 +133,18 @@ function startTest(){
 
 
 
-function checkCorrectAnswer(answerGiven,correctAnswer,answerGivenflag){
+function checkCorrectAnswer(answerGiven,correctAnswer,que){
 	isAnswerGiven = true;	
 	if(answerGiven === correctAnswer && answerGivenflag === false){
 		 correctAnswers++;
 		 
 		 alert(answerGivenflag + " "+ correctAnswer);
-		 answerGivenflag = true;
+		 que.setCorrectAnswerrGiven(true);
+		
 	}
 	if(answerGiven !== correctAnswer && answerGivenflag === true){
 		correctAnswer--;
-		answerGivenflag = false;
+		que.setCorrectAnswerrGiven(false);
 	}
 
 
@@ -155,7 +158,7 @@ function checkQuizStatus(){
  	var form = document.getElementById("question");
  	form.remove();
  	currentQuestion++
- 	if(currentQuestion <= Questions.length){
+ 	if(currentQuestion <= QuestionBankload.length){
  		
  		getQuestion();
  	}

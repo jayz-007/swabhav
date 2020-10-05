@@ -1,0 +1,25 @@
+<script>
+    function Custumer(name , location){
+        this.name = name;
+        this.location = location;
+
+        /*this.show = function(){
+            //var that = this; //soln 1
+            setTimeout(function(){
+                console.log(this);
+                console.log("name is: "+this.name+" location "+this.location);
+            }.bind(this),3000);
+        }*/
+
+        this.show = function(){
+            setTimeout(()=>{
+                console.log(this);
+                console.log("name is: "+this.name+" location "+this.location);
+            },3000);
+        }
+        
+    }
+
+    var c1 = new Custumer("jay","kalwa");
+    c1.show();
+</script>

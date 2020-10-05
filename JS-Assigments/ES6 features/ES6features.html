@@ -1,0 +1,91 @@
+<script>
+//Array Destrucuring
+function destructureArray(){
+    console.log("Array destructuring");
+var array = [1, 2, 3, 4, 5]
+const [first,second ,third,fourth,fifth] = array;
+
+console.log(first+" is first element");
+console.log(second+" is secondt element");
+console.log(third+" is third element");
+console.log(fourth+" is fourht element");
+console.log(fifth+" is fifth element");
+}
+
+//Arrow Functions
+
+function arrowFn(){
+    console.log("Arrow fn");
+    const x = (x, y) => x * y;
+}
+
+//for each
+
+function forEachfn(){
+    console.log("for Each Example");
+var colors = ['red', 'green', 'blue']
+colors.forEach((color) =>{
+           console.log(color);
+       });
+}
+
+//let and const
+function letAndConstfn(){
+    console.log("let n const Example :");
+    var x =10;
+    let y = 10;
+    const z = 10;
+    {
+    var x =15;
+    let y = 15;
+    const z = 15;
+
+    console.log("value of var inside scope "+x);
+    console.log("value of let inside scope "+y);
+    console.log("value of const inside scope "+z);   
+    }
+    console.log("value of var outside scope "+x);
+    console.log("value of let outside scope "+y);
+    console.log("value of const outside scope "+z); 
+
+    x = x*2;
+    y=y*2;
+    try {
+        z = z*2;
+    } catch (error) {
+        
+    }
+
+    console.log("value of var after modification  "+x);
+    console.log("value of let after modification "+y);
+    console.log("value of const after modification "+z); 
+
+}
+
+// Class
+function ClassExamplefn(){
+    console.log("class Ex");
+    class Car {
+  constructor(brand,modelName) {
+    this.brand = brand;
+    this.modelName = modelName;
+  }
+ getBrand() {
+      return this.brand;
+  }
+  getModelName(){
+      return this.modelName;
+  }
+}
+var mycar = new Car("Ferrari","F50");
+console.log(mycar.getBrand());
+console.log(mycar.getModelName());
+}
+
+
+arrowFn();
+ClassExamplefn();
+forEachfn();
+letAndConstfn();
+destructureArray();
+</script>

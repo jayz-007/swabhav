@@ -1,0 +1,24 @@
+  $(document).ready(function(){
+
+            var productSelected ="";
+            var products = [
+                { "value": "select", "text": "---select---"  },
+                { "value": "4000", "text": "iphone"  },
+                { "value": "5000", "text": "realme"  },
+                { "value": "6000", "text": "oneplus"  },
+                { "value": "7000", "text": "samsung" }
+            ];
+        
+            var product = $("<select></select>");
+            $.each(products,function(index,products){
+                product.append($("<option></option>").attr("value", products.value).text(products.text+" Cost "+products.value));
+                }); 
+               
+
+                  $("#products").html(product);
+                product.change(function(){
+                    productSelected = product.val();
+                    console.log(productSelected+ );
+                   
+                });   
+          });

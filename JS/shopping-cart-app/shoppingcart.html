@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        table { 
+            margin: 25px 0; 
+            width: 300px; 
+        } 
+  
+        table th, table td { 
+            padding: 30px; 
+            text-align: center; 
+        } 
+  
+        table, th, td { 
+            border: 1px solid; 
+        } 
+    </style> 
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+    <div>
+        <p>Products : <span id="itemsContainer"></span></p>
+        <p>Quantity: <input id="textInput" type="text" value="" /></p>
+        <button id="add">Add</button>
+        <button id="totalcost">Get Total Cost</button>
+        <p>Checkout Cost = <span id="checkOutCost"></span></p>
+
+        <table>
+            <thead>List of Employees</thead>
+            <tbody>
+                <tr>
+                    <td>product id</td>
+                    <td>Name</td>
+                    <td>cost</td>
+                    <td>quantity</td>
+                    <td>total cost</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $("document").ready(function(){
+            var totalCost=0;
+            var items = [
+                { "text": "---select---"},
+                {"id":1 , "name":"Iphone", "cost":10000 , "text":"Iphone cost Rs.10000"},
+                {"id":2 , "name":"Realme", "cost":5000 , "text":"Realme cost Rs.5000"},
+                {"id":3 , "name":"OnePlus", "cost":8000 , "text":"OnePlus - cost Rs.8000"}
+            ];
+            var itemSelect = $("<select></select>");
+            $.each(items,function(index,items){
+                itemSelect.append($("<option></option>").attr("value",  items.id+";"+items.name+";"+items.cost).text(items.text));
+            });
+            $("#itemsContainer").html(itemSelect);
+            itemSelect.change(function(){
+                productSelected = itemSelect.val();
+                console.log(productSelected);
+            });
+
+            $("#textInput").on("keyup change", function() {
+               quantityRequired = this.value;
+            });
+            $("#add").click(function(){
+                productSelected = productSelected.split(";")
+                var productCost = productSelected[2];
+              
+                totalCost = totalCost + (parseInt(productCost)*quantityRequired);
+              
+
+                var tableContent = "<tr><td>"+productSelected[0]+"</td><td>"+productSelected[1]+"</td><td>"+productSelected[2]+"</td><td>"+quantityRequired+"</td><td>"+totalCost+"</td><td></tr>"
+                $("tbody").append(tableContent);
+            })
+
+            $("#totalcost").click(function(){
+               $("#checkOutCost").html(totalCost);
+            });
+
+            function deleteRow(r) {
+            var i = r.parentNode.parentNode.rowIndex;
+            document.getElementById("myTable").deleteRow(i);
+}
+
+
+        });
+    </script>
+</body>
+</html>

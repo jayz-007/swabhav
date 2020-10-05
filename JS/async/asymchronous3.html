@@ -1,0 +1,17 @@
+<script>
+    function doSomething(input){
+        return new Promise(function(resolve,reject){
+            var data = Math.random()*input;
+            if(data>0.5){
+                resolve(data);
+            }
+            else reject({error:"Some error"});
+        });
+    }
+    doSomething(10).then(function(r){
+        console.log(r);
+    }).catch(function(r){
+        console.log(r);
+    });
+    console.log("End of program with promise");
+</script>

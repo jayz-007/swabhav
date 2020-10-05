@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "text": "Capital of India is ________?",
+        "option": ["Mumbai", "Delhi", "Goa", "Assam"],
+        "answer": "Delhi"
+    },
+    {
+        "id": 2,
+        "text": "Chief minister of Maharashtra is _________?",
+        "option": ["Narendra Modi", "Yogi Adityanath", "Devendra Fadnavis", "Uddhav Thackeray"],
+        "answer": "Uddhav Thackeray"
+    },
+    {
+        "id": 3,
+        "text": "The first-ever Floating Basketball Court of India is installed in ________?",
+        "option": ["Kochi", "Puducherry", "Diu", "Mumbai"],
+        "answer": "Mumbai"
+    },
+    {
+        "id": 4,
+        "text": "Financial Capital of India is ________?",
+        "option": ["Mumbai", "Delhi", "Goa", "Assam"],
+        "answer": "Mumbai"
+    },
+    {
+        "id": 5,
+        "text": "Which one is the first search engine in internet?",
+        "option": ["Google", "Internet Explorer", "Archie", "Altavista"],
+        "answer": "Archie"
+    }
+]

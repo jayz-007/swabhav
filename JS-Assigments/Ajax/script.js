@@ -12,9 +12,11 @@ function fetchData(){
     
     // POST Request
     xhr.open("POST","http://dummy.restapiexample.com/api/v1/create",true);
+    
     xhr.getResponseHeader("content-type","application/json");
 
     xhr.onprogress = function(){
+        
         console.log("On Progress");
     }
 
@@ -32,8 +34,10 @@ function popHandler(){
 
     // GET Request
     xhr.open("GET","	http://dummy.restapiexample.com/api/v1/employees",true);
+   
     
     xhr.onload = function() {
+       
         let obj = JSON.parse(this.responseText);
         console.log(obj.data);
         var list = document.querySelector("#list");
@@ -45,6 +49,7 @@ function popHandler(){
                     + name + "</td><td>"+age+ "</td></tr>"; 
                 tableBody = $("table tbody"); 
                 tableBody.append(markup); 
+                console.log("end of program");
                  
         }
          
@@ -55,3 +60,4 @@ function popHandler(){
     }
     xhr.send();
 }
+

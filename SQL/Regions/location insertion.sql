@@ -1,0 +1,1 @@
+insert into locations values(1,'chembur','400074','mumbai','maharashtra',1),(2,'vashi','400654','navi mumbai','maharashtra',1),(3,'some chowk','404474','vile parle','maharashtra',1),(4,'chembur','400888','chinaCity','chinaState',2),(5,'foo','400074','someCity','someState',3);

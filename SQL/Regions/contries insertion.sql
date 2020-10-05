@@ -1,0 +1,1 @@
+insert into countries values(1,'india',1),(2,'China',1),(5,'Germany',2),(3,'france',2),(4,'spain',2);

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<div>
+    <p>Roll No. : <input id="rollNo" type="text"></p>
+    <p>Name : <input id="name" type="text"></p>
+    <p>Age : <input id="age" type="text"></p>
+    <p>Email : <input id="email" type="text"></p>
+    <label>Date : </label><input type="date" id="date">
+    <p>Gender : <input type="radio" id="male" name="gender" value="male"><label>Male</label>
+        <input type="radio" id="female" name="gender" value="female"><label>Female</label>
+    </p>
+</div>
+<div>
+    <button id="add">Add</button>
+    <button id="display">Display</button>
+</div>
+<div id="studentTable">
+</div>
+
+<script>
+    $(document).ready(function () {
+        function studentCRUD(url) {
+           this.url = url;
+            var counter = 0;
+
+            this.startAPI = function () {
+               var url = this.url;
+               alert(url);
+
+            
+            function Student(rollNo, name, age, email, date, isMale) {
+                this.rollNo = rollNo
+                this.name = name
+                this.age = age
+                this.email = email
+                this.date = date
+                this.isMale = isMale
+            }
+            function getGender(isMale) {
+                if (isMale)
+                    return "Male"
+                else
+                    return "Female"
+            }
+            $("#display").on("click", displayStudentTable);
+
+            function displayStudentTable() {
+                $("#table").html("")
+                var textInput = ""
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    success: function (students) {
+                        console.log(students);
+                        textInput += "<table> <br> <tr> <th>Id</th> <th>RollNo</th> <th>Name</th> <th>Age</th> <th>Email</th> <th>DOB</th> <th>Gender</th> <th> </th><th> </th></tr>"
+                        for (var i = 0; i < students.length; i++) {
+                            textInput += "<tr><td>" + students[i].id + "</td><td>" + students[i].rollNo + "</td><td>" + students[i].name + "</td><td>" + students[i].age + "</td>"
+                                + "<td>" + students[i].email + "</td><td>" + students[i].date + "</td><td>" + getGender(students[i].isMale) + "</td><td><button id='deletebutton';>X</button>" + "</td><td><button id='editButton';>edit</button>" + "</td>"
+
+
+                        }
+                        textInput += "</table>"
+
+                        $("#studentTable").html("<h2> Total no. of students <span class='badge'>" + i + "</span> </h2>" + textInput)
+                    }
+                });
+            };
+            $("#add").on("click", takeStudentInfo);
+            function takeStudentInfo() {
+                var rollNo = $("#rollNo").val();
+                var name = $("#name").val()
+                var age = $("#age").val()
+                var email = $("#email").val()
+                var date = $("#date").val()
+                console.log(date);
+                var gender = $("input[name='gender']:checked").val()
+                var isMale = false
+
+                if (gender == "male") {
+                    isMale = true
+                }
+
+                var student = new Student(rollNo, name, age, email, date, isMale)
+
+                if (rollNo != 0 && name != "" && age != 0 && email != "" && date != "")
+                    addStudent(student);
+
+            }
+            function addStudent(studentData) {
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: studentData,
+                    success: function (data) {
+                        alert("Data Added Successfully")
+                    },
+                })
+            }
+
+            $("#studentTable").on("click", "button", function () {
+
+                if (this.id == "deletebutton") {
+                    var currow = $(this).closest("tr");
+                    currow.remove();
+                    var id = currow.find("td:eq(0)").text();
+
+                    $.ajax({
+                        type: "DELETE",
+                        url: url + "/" + id,
+
+                        success: function (data) {
+
+                            alert("Data deleted succesfullly");
+
+                        },
+                    })
+                    displayStudentTable();
+                }
+                if (this.id == "editButton") {
+                    alert(counter);
+                    counter++;
+                    if (counter == 1) {
+                        counter = 1;
+                        var currow = $(this).closest("tr");
+                        $(this).closest("tr").css({
+                            background: "red"
+                        })
+                        var id = currow.find("td:eq(0)").text();
+                        $.ajax({
+                            type: "GET",
+                            url: url + "/" + id,
+                            dataType: "json",
+                            success: function (student) {
+                                document.getElementById("name").value = student[0].name;
+                                document.getElementById("rollNo").value = student[0].rollNo;
+                                document.getElementById("age").value = student[0].age;
+                                document.getElementById("date").value = student[0].date;
+                                document.getElementById("email").value = student[0].email;
+                                if (student[0].isMale == true) {
+                                    $("#male").prop("checked", true);
+                                } else {
+                                    $("#female").prop("checked", true);
+                                }
+
+                            }
+                        });
+
+                    }
+                    if (counter == 2) {
+                        var rollNo = $("#rollNo").val();
+                        var name = $("#name").val()
+                        var age = $("#age").val()
+                        var email = $("#email").val()
+                        var date = $("#date").val()
+
+                        var gender = $("input[name='gender']:checked").val()
+                        var isMale = false
+
+                        if (gender == "male") {
+                            isMale = true
+                        }
+
+                        var student = new Student(rollNo, name, age, email, date, isMale);
+                        console.log(student);
+                        var currow = $(this).closest("tr");
+
+                        var id = currow.find("td:eq(0)").text();
+                        alert(id);
+                        $.ajax({
+                            type: "PUT",
+                            url: url + "/" + id,
+                            data: JSON.stringify(student),
+                            dataType: "json",
+                            contentType: 'application/json'
+
+                        }).done(function (result) {
+                            console.log(result)
+                        })
+
+                        alert("pressed again");
+                        counter = 0;
+                        $(this).closest("tr").css({
+                            background: "white"
+                        })
+                    }
+                }
+                displayStudentTable();
+            })
+        }
+       
+    }
+    var api =  new studentCRUD("http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students");
+        api.startAPI();
+       
+    }
+   
+
+    );
+
+    
+
+
+</script>
+
+</body>
+
+</html>

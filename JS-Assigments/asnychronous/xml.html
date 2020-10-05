@@ -1,0 +1,20 @@
+<script>
+   function doxmlRequest(callback){
+    const xhr = new XMLHttpRequest;
+    
+  
+     xhr.onreadystatechange = function(){
+    
+       console.log("hey");
+     }
+     xhr.open('get','demo.txt',true);
+     xhr.send();
+   }
+
+     
+    function doBlockage(){
+     console.log("this is blockage");
+    }
+    doxmlRequest(doBlockage);
+    console.log("End of prgram");
+</script>

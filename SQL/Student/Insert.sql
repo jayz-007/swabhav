@@ -1,0 +1,1 @@
+insert into student values (4,'jairaj khushalani',8.5)

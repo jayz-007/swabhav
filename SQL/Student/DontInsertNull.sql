@@ -1,0 +1,1 @@
+insert into student(name,cgpa) values (null,8.5)
