@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="AuthController" onsubmit='return validateInput()'method="GET">
+<label >Enter name</label>
+<input type="text"name ="name" id="name">
+<label id="nameValidate"></label><br>
+<label>Enter password</label>
+<input type="password" name="password" id="password">
+<label id="passwordValidate"></label><br>
+<input type="submit" onclick="validateInput()">
+</form>
+<script type="text/javascript">
+function validateInput(){
+    var name = document.getElementById("name");
+    var password = document.getElementById("password");
+    if(name.value!=''){
+   	 document.getElementById("nameValidate").textContent = "";
+   }
+   if(password.value!=''){
+  	 document.getElementById("nameValidate").textContent = "";
+  }
+    if(name.value == ''){
+        
+        document.getElementById("nameValidate").textContent = "Please Enter name"
+        return false;
+    }
+   
+    if(password.value == ''){
+        
+        document.getElementById("passwordValidate").textContent = "Please Enter password"
+        return false;
+    }
+
+   
+}
+</script>
+
+</body>
+</html>

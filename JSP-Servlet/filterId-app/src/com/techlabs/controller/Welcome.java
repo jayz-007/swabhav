@@ -1,8 +1,6 @@
 package com.techlabs.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class application
+ * Servlet implementation class Welcome
  */
-@WebServlet("/application")
-public class application extends HttpServlet {
+@WebServlet("/Welcome")
+public class Welcome extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public application() {
+    public Welcome() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,8 +27,7 @@ public class application extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		processRequest(request, response);
+		response.getWriter().append("id:-"+request.getParameter("id")).append(request.getContextPath());
 	}
 
 	/**
@@ -40,10 +37,5 @@ public class application extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/application.jsp");
-		rd.forward(request, response);
-	}
-
 
 }

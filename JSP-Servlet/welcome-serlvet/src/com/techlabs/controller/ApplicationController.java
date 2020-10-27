@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class summary
+ * Servlet implementation class application
  */
-@WebServlet("/summary")
-public class summary extends HttpServlet {
+@WebServlet("/application")
+public class ApplicationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public summary() {
+    public ApplicationController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,10 +40,10 @@ public class summary extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/summary1.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/application.jsp");
 		rd.forward(request, response);
 	}
+
 
 }
