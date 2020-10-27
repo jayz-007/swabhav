@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.techlabs.model.EmployeeData;
 
 /**
- * Servlet implementation class EmployeeController
+ * Servlet implementation class AddEmployeeController
  */
-@WebServlet("/EmployeeController")
-public class EmployeeController extends HttpServlet {
+@WebServlet("/AddEmployeeController")
+public class AddEmployeeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EmployeeController() {
+    public AddEmployeeController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,8 +31,9 @@ public class EmployeeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		processRequest(request, response);
+		
+		 
+		
 	}
 
 	/**
@@ -41,14 +42,16 @@ public class EmployeeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		 EmployeeData employeeData = new EmployeeData();
+		 employeeData = employeeData.getInstance();
+		 String name = (String) request.getParameter("Name");
+		 String role = (String) request.getParameter("Role");
+		 //int id =   Integer.parseInt(request.getParameter("id"));
+		 employeeData.addEmployee(name,role);
+		 RequestDispatcher rd = request.getRequestDispatcher("index.html");
+		 rd.forward(request, response);
+		 
+		
 	}
-	
-	   private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		   EmployeeData employeeService = new EmployeeData();
-		   employeeService = employeeService.getInstance();
-	        request.setAttribute("employees", employeeService.getEmployees());
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("Employee.jsp");
-	        dispatcher.forward(request, response);
-	    }
 
 }

@@ -1,18 +1,20 @@
 package com.techlabs.model;
 
+import java.util.UUID;
+
 public class Employee {
-	private int id;
+	private UUID id;
 	private String name;
 	private String role;
 
-	public Employee(int id, String name, String role) {
-		super();
-		this.id = id;
+	public Employee( String name, String role) {
+		
+		this.id = UUID.randomUUID();
 		this.name = name;
 		this.role = role;
 	}
 
-	public int getId() {
+	public UUID getId() {
 		return id;
 	}
 

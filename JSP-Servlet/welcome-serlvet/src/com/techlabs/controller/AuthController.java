@@ -45,23 +45,27 @@ public class AuthController extends HttpServlet {
 				request.getSession().setAttribute("password", password);
 				RequestDispatcher rd = request.getRequestDispatcher("/login.html");
 				rd.forward(request, response);
-			} else if (request.getSession().getAttribute("userName") != null
-					&& request.getSession().getAttribute("password") != null) {
-				if (request.getSession().getAttribute("userName").equals("admin")
-						&& request.getSession().getAttribute("password").equals("admin"))
-					;
+			} else {
+
+				out.println("Login failed " + request.getSession().getAttribute("usrName"));
+			}
+
+		} else if (request.getSession().getAttribute("userName") != null
+				&& request.getSession().getAttribute("password") != null) {
+			
+			if (request.getSession().getAttribute("userName").equals("admin")
+					&& request.getSession().getAttribute("password").equals("admin"))
+			{
 				RequestDispatcher rd = request.getRequestDispatcher("/login.html");
 				rd.forward(request, response);
 
-			} else {
-				RequestDispatcher rd = request.getRequestDispatcher("/form.html");
-				rd.forward(request, response);
 			}
-		}
-
-		else {
-
-			out.println("Login failed "+request.getSession().getAttribute("usrName"));
+			
+		} else {
+			
+			out.print(request.getSession().getAttribute("userName")+" "+request.getSession().getAttribute("password"));
+			RequestDispatcher rd = request.getRequestDispatcher("/form.html");
+			rd.forward(request, response);
 		}
 
 	}

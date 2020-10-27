@@ -38,5 +38,6 @@
 		</tbody>
 
 	</table>
+	<a href="index.html" type="button">Back</a>
 </body>
 </html>
