@@ -1,6 +1,8 @@
 package com.techlabs.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,19 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.techlabs.model.Employee;
 import com.techlabs.service.EmployeeService;
 
 /**
- * Servlet implementation class AddEmployeeController
+ * Servlet implementation class EditController
  */
-@WebServlet("/AddEmployeeController")
-public class AddEmployeeController extends HttpServlet {
+@WebServlet("/EditController")
+public class EditController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddEmployeeController() {
+    public EditController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,8 +34,22 @@ public class AddEmployeeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		PrintWriter out = response.getWriter();
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String empId =  (String) request.getParameter("empId");
+		EmployeeService es = new EmployeeService().getInstance();
+		out.print(empId);
 		
-		 
+		for(Employee emp : es.getEmployees() ) {
+			if(emp.getId().toString().equals(empId)) {
+				request.setAttribute("editEmployee",emp);
+				RequestDispatcher rd = request.getRequestDispatcher("Edit.jsp");
+				rd.forward(request, response);
+				break;
+			}
+		}
+		
+		
 		
 	}
 
@@ -42,16 +59,6 @@ public class AddEmployeeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		 EmployeeService employeeData = new EmployeeService();
-		 employeeData = employeeData.getInstance();
-		 String name = (String) request.getParameter("Name");
-		 String role = (String) request.getParameter("Role");
-		 //int id =   Integer.parseInt(request.getParameter("id"));
-		 employeeData.addEmployee(name,role);
-		 RequestDispatcher rd = request.getRequestDispatcher("index.html");
-		 rd.forward(request, response);
-		 
-		
 	}
 
 }

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.techlabs.model.EmployeeData;
+import com.techlabs.service.EmployeeService;
 
 /**
  * Servlet implementation class EmployeeController
@@ -44,7 +44,7 @@ public class EmployeeController extends HttpServlet {
 	}
 	
 	   private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		   EmployeeData employeeService = new EmployeeData();
+		   EmployeeService employeeService = new EmployeeService();
 		   employeeService = employeeService.getInstance();
 	        request.setAttribute("employees", employeeService.getEmployees());
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("Employee.jsp");

@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="AuthController" onsubmit='return validateInput()'method="GET">
+<form action="auth.jsp" onsubmit='return validateInput()'method="post">
 <label >Enter name</label>
 <input type="text"name ="name" id="name">
 <label id="nameValidate"></label><br>
@@ -35,7 +35,9 @@ function validateInput(){
         document.getElementById("passwordValidate").textContent = "Please Enter password"
         return false;
     }
-
+    name.value = "";
+    password.value="";
+    
    
 }
 </script>

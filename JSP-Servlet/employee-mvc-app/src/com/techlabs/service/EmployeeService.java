@@ -1,14 +1,17 @@
-package com.techlabs.model;
+package com.techlabs.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
-public class EmployeeData {
-	private static EmployeeData ed;
+import com.techlabs.model.Employee;
+
+public class EmployeeService {
+	private static EmployeeService ed;
 	private List<Employee> employees = new ArrayList<Employee>();
 
-	public EmployeeData() {
+	public EmployeeService() {
 		employees.add(new Employee( "Jay", "Developer"));
 		employees.add(new Employee( "Vinit", "Developer"));
 		employees.add(new Employee( "Pawan", "Analyst"));
@@ -24,10 +27,19 @@ public class EmployeeData {
 		return employees;
 	}
 	
-	public EmployeeData getInstance() {
+	public EmployeeService getInstance() {
 		if(ed == null) {
-			ed = new EmployeeData();
+			ed = new EmployeeService();
 		}
 		return ed;
+	}
+	
+	public void deleteEmployee(String id) {
+		for(Employee emp : employees) {
+			if(emp.getId().toString().equals(id)) {
+				employees.remove(emp);
+				System.out.println();
+			}
+		}
 	}
 }

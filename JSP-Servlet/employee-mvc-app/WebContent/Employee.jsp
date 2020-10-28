@@ -8,9 +8,10 @@
 <meta charset="ISO-8859-1">
 <title>Student Record</title>
 </head>
-<body><form action="EmployeeController" method="get">
-<input type="submit" value="Get Employees">
-</form>
+<body>
+	<form action="EmployeeController" method="get">
+		<input type="submit" value="Get Employees">
+	</form>
 	<%
 		List<Employee> employees = (List<Employee>) request.getAttribute("employees");
 	%>
@@ -18,7 +19,7 @@
 		<thead>
 			<tr>
 				<th>ID</th>
-				<th> Name</th>
+				<th>Name</th>
 				<th>Role</th>
 			</tr>
 		</thead>
@@ -31,6 +32,18 @@
 				<td><%=employee.getId()%></td>
 				<td><%=employee.getName()%></td>
 				<td><%=employee.getRole()%></td>
+
+				<td><form action="EditController" method="post">
+						<input type="hidden" id="emp" name="empId"
+							value="<%=employee.getId() %>"> <input type="submit"
+							value="edit">
+					</form>
+					
+				<td><form action="Deletecontroller" method="post">
+						<input type="hidden" id="emp" name="empId"
+							value="<%=employee.getId() %>"> <input type="submit"
+							value="Delete">
+					</form>
 			</tr>
 			<%
 				}
@@ -38,6 +51,13 @@
 		</tbody>
 
 	</table>
+
 	<a href="index.html" type="button">Back</a>
+	<script type="text/javascript">
+		function show() {
+			var id = document.getElementById("emp");
+			alert(id);
+		}}
+	</script>
 </body>
 </html>
