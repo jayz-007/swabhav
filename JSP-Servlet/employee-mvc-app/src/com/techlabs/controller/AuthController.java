@@ -49,7 +49,7 @@ public class AuthController extends HttpServlet {
 			if (name.equals(usr) && password.equals(pd)) {
 				request.getSession().setAttribute("userName", name);
 				request.getSession().setAttribute("password", password);
-				RequestDispatcher rd = request.getRequestDispatcher("/index.html");
+				RequestDispatcher rd = request.getRequestDispatcher("/employee.html");//changed to employee.html 
 				rd.forward(request, response);
 			} else {
 
@@ -63,7 +63,7 @@ public class AuthController extends HttpServlet {
 			if (request.getSession().getAttribute("userName").equals("admin")
 					&& request.getSession().getAttribute("password").equals("admin"))
 			{
-				RequestDispatcher rd = request.getRequestDispatcher("/index.html");
+				RequestDispatcher rd = request.getRequestDispatcher("/employee.html");
 				rd.forward(request, response);
 
 			}

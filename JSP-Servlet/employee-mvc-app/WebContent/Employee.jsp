@@ -52,7 +52,7 @@
 
 	</table>
 
-	<a href="index.html" type="button">Back</a>
+	<a href="employee.html" type="button">Back</a>
 	<script type="text/javascript">
 		function show() {
 			var id = document.getElementById("emp");

@@ -14,6 +14,7 @@ import static java.lang.System.out;
 import org.apache.jasper.tagplugins.jstl.core.Out;
 
 import com.techlabs.model.Login;
+import com.techlabs.service.LoginService;
 
 /**
  * Servlet implementation class AuthController
@@ -36,16 +37,24 @@ public class AuthController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		Login login = new Login().getInstance();
-		String usr = login.getUserName();
-		String pd = login.getPassWord();
+		String usr = null ;String pd = null;
+		LoginService ls = new LoginService().getInstance();
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		PrintWriter out = response.getWriter();
+		
+		//added this part
+		for(Login user : ls.getUsers()) {
+			if(user.getUserName().equals(name)&&user.getPassWord().equals(password)) {
+				usr = user.getUserName();
+				pd = user.getPassWord();
+			}
+	///til here		
+		}
 		if (name != (null) && password != (null)) {
+			
 			if (name.equals(usr) && password.equals(pd)) {
 				request.getSession().setAttribute("userName", name);
 				request.getSession().setAttribute("password", password);

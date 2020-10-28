@@ -30,7 +30,7 @@ public class LogoutController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		RequestDispatcher rd = request.getRequestDispatcher("/form.html");
+		RequestDispatcher rd = request.getRequestDispatcher("/login.html");
 		rd.forward(request, response);
 	}
 
