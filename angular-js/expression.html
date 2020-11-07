@@ -8,13 +8,15 @@
     <script src="angular.js"></script>
 </head>
 
-<body>
+<body ng-app>
     
 
     <div ng-app>
-        <h1>{{22/7 | }}</h1>
+        <h1>{{22/7 |number :2 }}</h1>
         <h2>{{student.name||"swabhav techlabs"|uppercase}}</h2>
     </div>
+
+    {{6/3}}
 
 </body>
 

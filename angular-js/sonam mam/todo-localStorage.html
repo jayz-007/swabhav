@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <style>
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+        .check :checked + .data{
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body ng-app="modA">
+    <div ng-controller="controllerA">
+        <form ng-submit="todoAdd()">
+            <input type="text" ng-model="todoInput" size="80" placeholder="Add Task">
+            <input type="submit" value="+">
+        </form>
+        <table>
+            <thead>
+                <th>Done</th>
+                <th>Task</th>
+                <th>Date</th>
+                <th>Remove</th>
+            </thead>
+            <tbody>
+            
+                <tr ng-repeat="task in todoList track by $index">
+                    <td><input type="checkbox" ng-model="task.done" ng-click="arrange(task)" class="check"></td>
+                    <td ng-style="task.strike">{{task.todoText}}</td>
+                    <td ng-bind="task.date" class="date"></td>
+                    <td><button ng-click="remove(task)">Remove</button></td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
+    </div>
+    <script src="angular.js"></script> 
+   <script>
+       angular.module("modA",[]).controller("controllerA",function($scope){
+         //  $scope.todoList = [];
+            $scope.currentDate = new Date();
+            if(typeof(Storage)!="undefined"){
+                var tasks = localStorage.getItem("tasks");
+                if(tasks!=null){
+                    $scope.todoList = JSON.parse(tasks);
+                }
+                else{
+                    $scope.todoList = []
+                }
+            }
+            $scope.update = function(){
+                localStorage.setItem("tasks", JSON.stringify($scope.todoList));
+            }
+
+            $scope.todoAdd = function() {
+                $scope.todoList.push({todoText:$scope.todoInput, done:false,date: $scope.currentDate});
+                $scope.update();
+                $scope.todoInput = "";
+            }
+
+            $scope.remove = function(task){
+                var index = $scope.todoList.indexOf(task)
+                var choice = confirm("Sure Delete");
+                if(choice){
+                    $scope.todoList.splice(index,1)
+                    $scope.update();
+               }
+            }
+
+            $scope.arrange = function(task){
+                for(var i=0;i<$scope.todoList.length;i++){
+                    if($scope.todoList[i]==task){
+                        if(task.checked){
+                            $scope.todoList[i].strike={
+                                'text-decoration-line':'line-through'
+                            }
+                        }
+                    }
+                }
+            }
+        })
+   </script>
+</body>
+</html>

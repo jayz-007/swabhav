@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body ng-app="modA">
+
+    <div ng-controller="controllerA">
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#carrer">Carrer</a>
+            <a href="#about">About</a>
+
+        </nav>
+
+        <div ng-hide="homeVar" id="home">
+            <h1>Home content</h1>
+        </div>
+
+        <div ng-hide="carrerVar" id="carrer">
+            <h1>Carrer content</h1>
+        </div>
+
+        <div ng-hide="aboutVar" id="about">
+            <h1>About content</h1>
+        </div>
+    </div>
+    <script src="angular.js"></script>
+
+    <script>
+
+        angular.module('modA', []).controller('controllerA', function ($rootScope, $scope, $log, $location) {
+            $scope.data = 'Controller A says hello';
+            $scope.homeVar = true;
+            $scope.carrerVar = true;
+            $scope.aboutVar = true;
+
+            $rootScope.$on("$locationChangeStart", function (event, next, current) {
+
+                console.log($location.url() + " is fired");
+                if ($location.url() == "/home") {
+                    $scope.homeVar = false;
+                    $scope.carrerVar = true;
+                    $scope.aboutVar = true;
+                }
+                else if ($location.url() == "/carrer") {
+                    $scope.homeVar = true;
+                    $scope.carrerVar = false;
+                    $scope.aboutVar = true;
+                } else if ($location.url() == "/about") {
+                    $scope.homeVar = true;
+                    $scope.carrerVar = true;
+                    $scope.aboutVar = false;
+                } else if ($location.url() == "/") {
+                    $scope.homeVar = true;
+                    $scope.carrerVar = true;
+                    $scope.aboutVar = true;
+                }
+
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+    h1{
+        background-color: green;
+    }
+    table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        
+        td.done:checked +td.doneTodo{
+            
+            text-decoration: line-through;
+        }
+</style>
+<body ng-app="myApp" ng-controller="controllerA">
+
+<h2>My Todo List</h2>
+
+<form ng-submit="todoAdd()">
+    <input type="text" ng-model="todoInput" size="100" placeholder="Add Todo">
+    <input type="submit" value="Add">
+</form>
+
+<br>
+<h1>To do</h1>
+<table>
+    <thead>
+        <tr>
+            <td>Check</td>
+            <td>Todo</td>
+            <td>date</td>
+            <td>remove</td>
+
+        </tr>
+    </thead>
+    <tbody ng-repeat ="x in todoList">
+        <td > <input type="checkbox" ng-model="x.done" class="done"> </td>
+        <td class="doneTodo"><span ng-bind="x.todoText"class="todo" ></span></td>
+        <td><span ng-bind="x.date" class="date"></span></td>
+        <td>
+            <input type="button" ng-click ="remove(x)" value="X">
+        </td>
+
+    </tbody>
+</table>
+
+
+
+
+
+<script>
+var app = angular.module('myApp', ["ngStorage"]); 
+app.controller('controllerA', function($scope,$localStorage) {
+    $scope.currentDate = new Date();
+    $scope.todoList = [{todoText:'Todo', done:false,date:$scope.currentDate}];
+    
+
+
+
+    $scope.todoAdd = function() {
+        $scope.todoList.push({todoText:$scope.todoInput, done:false,date:$scope.currentDate});
+        
+        $scope.todoInput = "";
+    };
+$scope.remove=function(x){
+    alert(x.todoText);
+    var index = $scope.todoList.indexOf(x);
+    
+    $scope.todoList.splice(index,1);
+}
+   
+});
+
+
+var app=angular.module("myApp",[]);app.controller("controllerA",["$scope","$rootScope",function(t,o){t.currentDate=new Date,t.todoList=[{todoText:"Todo",done:!1,date:t.currentDate}],t.todoAdd=function(){t.todoList.push({todoText:t.todoInput,done:!1,date:t.currentDate}),t.todoInput=""},t.remove=function(o){alert(o.todoText);var e=t.todoList.indexOf(o);t.todoList.splice(e,1)}}]);
+</script>
+
+</body>

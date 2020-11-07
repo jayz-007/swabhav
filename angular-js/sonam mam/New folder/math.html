@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="angular.js"></script>
+    <script src="math.js"></script>
+</head>
+
+<body ng-app="modA">
+    <div>
+        <p>Enter a number:-</p>
+        <input type="number" ng-model="number">
+        <button ng-click="runSquare();runCube()">Submit</button>
+    </div>
+    <div ng-controller="SquareController">
+
+        <h1>Square is:-{{getValue}}</h1>
+
+
+    </div>
+    <div ng-controller="CubeController">
+        <h1>Cube is:-{{getValue}}</h1>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+    h1{
+        background-color: green;
+    }
+    table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        
+        td.done:checked +td.doneTodo{
+            
+            text-decoration: line-through;
+        }
+</style>
+<body ng-app="myApp" ng-controller="controllerA">
+
+<h2>My Todo List</h2>
+
+<form ng-submit="todoAdd()">
+    <input type="text" ng-model="todoInput" size="100" placeholder="Add Todo">
+    <input type="submit" value="Add">
+</form>
+
+<br>
+<h1>To do</h1>
+<table>
+    <thead>
+        <tr>
+            <td>Check</td>
+            <td>Todo</td>
+            <td>date</td>
+            <td>remove</td>
+
+        </tr>
+    </thead>
+    <tbody ng-repeat ="x in todoList">
+        <td > <input type="checkbox" ng-model="x.done" class="done"> </td>
+        <td class="doneTodo"><span ng-bind="x.todoText"class="todo" ></span></td>
+        <td><span ng-bind="x.date" class="date"></span></td>
+        <td>
+            <input type="button" ng-click ="remove(x)" value="X">
+        </td>
+
+    </tbody>
+</table>
+
+
+
+
+
+<script>
+var app = angular.module('myApp', []); 
+app.controller('controllerA', function($scope) {
+    $scope.currentDate = new Date();
+    if(typeof(Storage)!="undefined"){
+                var tasks = localStorage.getItem("tasks");
+                if(tasks!=null){
+                    $scope.todoList = JSON.parse(tasks);
+                }
+                else{
+                    $scope.todoList = []
+                }
+            }
+            $scope.update = function(){
+                localStorage.setItem("tasks", JSON.stringify($scope.todoList));
+            }
+
+
+    $scope.todoAdd = function() {
+        $scope.todoList.push({todoText:$scope.todoInput, done:false,date:$scope.currentDate});
+        $scope.update();
+        $scope.todoInput = "";
+    };
+$scope.remove=function(x){
+    alert(x.todoText);
+    var index = $scope.todoList.indexOf(x);
+    $scope.todoList.splice(index,1);
+    $scope.update();
+}
+   
+});
+</script>
+
+</body>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .circle {
+            background-color: #99a09a;
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border-radius: 50%;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="angular.js"></script>
+</head>
+
+<body ng-app="modA">
+    <div id="myDiv" ng-controller="controllerA">
+        <div id="attempts">
+        </div>
+        <div id="rules">
+            <h1><b><font color="Blue">Blue Ball Game</font> </b></h1>
+            <h3><u><b>Rules</b></u></h3>
+            <ol style="text-align: left">
+                <li><b>Please read the rules of game carefully...</b></li>                        
+                <li><b>Press 'START' to start the Game</b></li>
+                </ol>
+            <ul style="text-align: left">
+                <li>If you guessed ball and the location is frontside of blueball then that ball will become<font color="Green"> Green </font>color ball</li>
+                <li>If you guessed ball and the location is backside of blueball then  that ball will become<font color="Red"> Red</font> color ball</li>
+                <li>If you guessed the right ball then you'll win the game</li>
+            </ul>
+            <button id= "start-button" ng-click="start()">start</button>
+        </div>
+        
+    </div>
+
+    <script src="angular.js"></script>
+    <script>
+        angular.module('modA', []).controller('controllerA',  function ($rootScope,$scope) {
+            var correctBall = Math.floor(Math.random() * 50);
+            var allBalls = []
+            var attempts = 10;
+            var status = "started";
+            var message = angular.element(document.createElement("h1"));
+            message.html = "Turns Left"+attempts;
+            console.log(correctBall);
+            $scope.start=function(){    
+                var attemtsDiv=angular.element(document.getElementById("attempts"));
+                    attemtsDiv.append("number Of attempts left " + attempts);
+                console.log(correctBall);
+                for (var index = 0; index < 50; index++) {
+                   
+                    var ball = angular.element(document.createElement("button"));
+                   
+                    ball.addClass("circle");
+                    ball.attr("id", index);
+                    ball.html( index);
+                    angular.element(document.getElementById("myDiv")).append(ball);
+                    allBalls[index] = ball;
+                  
+                    $("#"+index).click($scope.analyze)
+                    angular.element(document.getElementById("rules")).remove();
+                }
+                
+                }
+                $scope.analyze= function(){
+                    console.log($(this).attr("id")+"analysing"+correctBall);
+                    var attemtsDiv=angular.element(document.getElementById("attempts"));
+                    attemtsDiv.empty();
+                    attempts = attempts - 1;
+                    attemtsDiv.append("number Of attempts left " + attempts);
+
+                    if($(this).attr("id")==correctBall){
+                        $(this).css({'background-color':'blue'})
+                        status = "won";
+                        
+                var win = angular.element(document.createElement("h1"));
+                win.html("You have won");
+                win.css({'color':'green'});
+                angular.element(document.getElementById("myDiv")).append(win);
+                $scope.continueGame();
+        
+                   
+                    }
+                    else if($(this).attr("id")>correctBall){
+                       
+                        $(this).css({'background-color':'green'})
+                    }
+                    
+                    else if($(this).attr("id")<correctBall){
+                        $(this).css({'background-color':'red'})
+                    }
+                    if (attempts == 0 && status !== "won") {
+                    var rightBall = document.getElementsByClassName("click");
+                    console.log(rightBall)
+                
+                var win = angular.element(document.createElement("h1"));
+                win.html("You have lost");
+                win.css({'color':'red'});
+                angular.element(document.getElementById("myDiv")).append(win);
+                $scope.continueGame();
+        
+                 
+                  
+                   
+
+                };
+                $(this).css("pointer-events","none");
+
+            }
+
+
+
+          
+            $scope.reload = function () {
+                    document.getElementById("myDiv").style.pointerEvents = 'none';
+                    setTimeout(() => {
+                        location.reload();
+                    }, 3000);
+                }
+
+                $scope.continueGame =function(){
+                    var yes =angular.element(document.createElement("button"));
+                    yes.html("yes")
+                    yes.css({'padding':'20px'})
+                    yes.click($scope.reload());
+                    angular.element(document.getElementById("myDiv")).append(yes);
+                    var no =angular.element(document.createElement("button"));
+                    no.html("no");
+                    no.css({'padding':'20px'})
+                    no.click = function(){
+                        alert("Thank you fr playing")
+                    }
+                    angular.element(document.getElementById("myDiv")).append(no);
+                
+                }
+        });
+
+    </script>
+</body>
+
+</html>

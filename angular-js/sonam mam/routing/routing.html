@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="angular.js"></script>
+    <script src="angular-route.js"></script>
+</head>
+<body ng-app="routeApp">
+    <a href="#/!">Main</a>
+    <a href="#/!secondpage">Click to route</a>
+
+    <script>
+var route = angular.module('routeApp',["ngRoute"]);
+route.config(function($routeProvider){
+    $routeProvider
+    .when("/",{
+        template: '<h1> first page</h1>'
+    })
+    .when("/secondpage",{
+        template: '<h1> second Page</h1>'
+
+    })
+})
+
+    </script>
+    
+</body>
+</html>

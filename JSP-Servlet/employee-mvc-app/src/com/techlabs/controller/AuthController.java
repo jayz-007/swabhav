@@ -13,7 +13,7 @@ import static java.lang.System.out;
 
 import org.apache.jasper.tagplugins.jstl.core.Out;
 
-import com.techlabs.model.Login;
+import com.techlabs.model.Admin;
 
 /**
  * Servlet implementation class AuthController
@@ -36,45 +36,9 @@ public class AuthController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		Login login = new Login().getInstance();
-		String usr = login.getUserName();
-		String pd = login.getPassWord();
-		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
-		String name = request.getParameter("name");
-		String password = request.getParameter("password");
-		PrintWriter out = response.getWriter();
-		if (name != (null) && password != (null)) {
-			if (name.equals(usr) && password.equals(pd)) {
-				request.getSession().setAttribute("userName", name);
-				request.getSession().setAttribute("password", password);
-				RequestDispatcher rd = request.getRequestDispatcher("/employee.html");//changed to employee.html 
-				rd.forward(request, response);
-			} else {
-
-				RequestDispatcher rd = request.getRequestDispatcher("failure.html");
-				rd.forward(request, response);
-			}
-
-		} else if (request.getSession().getAttribute("userName") != null
-				&& request.getSession().getAttribute("password") != null) {
-			
-			if (request.getSession().getAttribute("userName").equals("admin")
-					&& request.getSession().getAttribute("password").equals("admin"))
-			{
-				RequestDispatcher rd = request.getRequestDispatcher("/employee.html");
-				rd.forward(request, response);
-
-			}
-			
-		} else {
-			
-			out.print(request.getSession().getAttribute("userName")+" "+request.getSession().getAttribute("password"));
-			RequestDispatcher rd = request.getRequestDispatcher("/login.html");
-			rd.forward(request, response);
-		}
-
+System.out.println("Hello");
+	RequestDispatcher rd = request.getRequestDispatcher("/EmployeeController");
+	rd.forward(request, response);
 	}
 
 	/**

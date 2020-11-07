@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LogoutController
@@ -29,7 +30,12 @@ public class LogoutController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println(request.getSession().getAttribute("userName"));
+		HttpSession session = request.getSession();
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		session.setAttribute("userName", "empty");
+		session.setAttribute("password", "empty");
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/login.html");
 		rd.forward(request, response);
 	}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body ng-app="modB">
+
+    <div ng-controller="controllerBind">
+        <h1> Binding</h1>
+        Roll: <input ng-model="student.roll">
+        Name: <input ng-model="student.name">
+        cgpa: <input ng-model="student.cgpa">
+        <p>{{student.roll}}</p>
+        <p>{{student.name}}</p>
+        <p>{{student.cgpa}}</p>
+    </div>
+
+    <script src="angular.js"></script>
+    <script>
+        angular.module('modB', []).controller('controllerBind', function ($scope) {
+            $scope.student={
+                roll:1,
+                name:'Jay',
+                cgpa:9.12
+            }
+        });
+        
+    </script>
+</body>
+
+</html>

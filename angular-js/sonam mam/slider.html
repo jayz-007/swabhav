@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-app="slider">
+   
+    <script src="angular.js"></script>
+        <script>
+            angular.module("slider",[]).controller("controllerA",function($scope){
+                $scope.addButton = function() {
+                    $scope.buttons = [];
+                    alert($scope.value);
+                    for(var i =0;i<$scope.value;i++){
+                        $scope.buttons.push(i);
+                    }
+                }
+            });
+        </script>
+        <div ng-controller="controllerA">
+            <input type="range" min="0" max="100" ng-model="value" ng-click="addButton()">
+            <button ng-repeat="button in buttons">
+                {{button+1}}
+            </button>
+        </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+  
+</head>
+<body ng-app="myApp" ng-controller=controllerA>
+    <script src="angular.js"></script>
+    {{"Additons is:"+sum}}<br>
+    {{"Subtration is: "+sub}}
+
+    <script>
+   var application = angular.module('myApp', []); 
+  
+  application.factory('math', function() { 
+      var randomObject = {}; 
+     var num1 = 2;
+     var num2 = 5;
+      randomObject.addNumbers = function() { 
+          return (num1+num2); 
+      }; 
+
+      randomObject.subtractNumbers = function() { 
+          return (num2-num1); 
+      }; 
+      return randomObject; 
+  }); 
+  
+  application.controller('controllerA', function($scope, math) { 
+     $scope.sum = math.addNumbers();
+     $scope.sub = math.subtractNumbers();
+  }); 
+
+    </script>
+    
+</body>
+</html>

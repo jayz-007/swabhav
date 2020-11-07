@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body ng-app="modB">
+
+    <div ng-controller="controllerBind">
+        <section>
+            <button type="button"  ng-click="load()" >Load</button><br>
+            <div ng-repeat="student in students">
+            {{student.id}}<br>
+            {{student.name}}<br>
+            <img  ng-src="{{student.img}}">
+            </div>
+        </section>
+      
+    </div>
+
+    <script src="angular.js"></script>
+    <script>
+        angular.module('modB', []).controller('controllerBind', function ($scope) {
+            $scope.load=function(){
+            $scope.students=[{
+                id:102,
+                name:'Jay',
+                img:'jay.png'
+            },
+            {
+                id:104,
+                name:'Ron',
+                img:'ron.png'
+            }
+        
+            ]
+        }
+        });
+        
+    </script>
+</body>
+
+</html>

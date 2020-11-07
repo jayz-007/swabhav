@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body ng-app="modB">
+
+    <div ng-controller="controllerBind">
+        <section>
+            <button type="button"  ng-click="load()" >Load</button><br>
+            <div ng-repeat="student in students">
+            {{student.id}}<br>
+            {{student.name}}<br>
+            {{student.cgpa| grade}}
+           
+                     </div>
+        </section>
+      
+    </div>
+
+    <script src="angular.js"></script>
+    <script>
+        angular
+        
+        .module('modB', [])
+        .filter("grade",function(){
+            return function(cgpa){
+                if(cgpa >= 9.0)
+                return "A"
+                if(cgpa <9.0 && cgpa >= 6.0)
+                return "B"
+                else
+                return "C"
+            }
+        })
+        .controller('controllerBind', function ($scope) {
+            $scope.load=function(){
+            $scope.students=[{
+                id:102,
+                name:'Jay',
+                cgpa:8.0
+            },
+            {
+                id:104,
+                name:'Ron',
+                cgpa:9.0
+            }
+        
+            ]
+        }
+
+      
+        });
+        
+    </script>
+</body>
+
+</html>

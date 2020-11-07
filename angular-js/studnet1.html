@@ -16,20 +16,20 @@
         angular.module("studentApp", []).controller("studnetController", function ($rootScope) {
 
 
-            console.log("controller created");
-            $rootScope.student = { id: 20, name: "jay", cgpa: 9.0 };
-            $rootScope.cgpa = $rootScope.student.cgpa;
-            $rootScope.name = $rootScope.student.name;
-            $rootScope.id = $rootScope.student.id;
+           
+            $rootScope.students = [{ 
+                id: 20, name: "jay", cgpa: 9.0 },
+                {id: 22, name: "ron", cgpa: 9.32}];
+           
 
 
-            if ($rootScope.student.cgpa >= 8.0) {
+            if (student.cgpa >= 8.0) {
                 $rootScope.color = { "color": "green" }
             }
-            if ($rootScope.student.cgpa < 8.0 && $rootScope.student.cgpa > 6.0) {
+            if (student.cgpa < 8.0 && $rootScope.student.cgpa > 6.0) {
                 $rootScope.color = { "color": "yellow" }
             }
-            if ($rootScope.student.cgpa <= 6.0) {
+            if (student.cgpa <= 6.0) {
                 $rootScope.color = { "color": "red" }
             }
 
@@ -38,10 +38,11 @@
     </script>
 
     <div ng-controller="studnetController" >
-        <h2>{{"Name is: "+name}}</h2>
-        <h2>{{"Id is "+id}}</h2>
-        <h2 ng-style="color">{{"CGPA is: "+cgpa}}</h2>
-
+        <div ng-repeat="student in students">
+        <h2>{{"Name is: "+student.name}}</h2>
+        <h2>{{"Id is "+student.id}}</h2>
+        <h2 ng-style="color">{{"CGPA is: "+student.cgpa}}</h2>
+    </div>
     </div>
 </body>
 

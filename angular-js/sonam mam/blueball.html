@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .circleButton{
+            background-color: #99a09a;
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border-radius: 50%;
+            
+        }
+        .red{
+            background-color:red;
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border-radius: 50%;
+            
+        }
+        .green{
+            background-color: forestgreen;
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border-radius: 50%;
+            
+        }
+         .blue{
+            background-color:blue;
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border-radius: 50%;
+            
+        }
+    </style>
+    <script src="angular.js"></script>
+</head>
+<body ng-app ="slider">
+    <div id="rules" ng-controller = "controllerA">
+        <h1><b><font color="Blue">Blue Ball Game</font> </b></h1>
+        <h3><u><b>Rules</b></u></h3>
+        <ol style="text-align: left">
+            <li><b>Please read the rules of game carefully...</b></li>                        
+            <li><b>Press 'START' to start the Game</b></li>
+            </ol>
+        <ul style="text-align: left">
+            <li>If you guessed ball and the location is frontside of blueball then that ball will become<font color="Green"> Green </font>color ball</li>
+            <li>If you guessed ball and the location is backside of blueball then  that ball will become<font color="Red"> Red</font> color ball</li>
+            <li>If you guessed the right ball then you'll win the game</li>
+        </ul>
+        <button id="startBtn" class="startBtn" ng-click="addButton()" >Start</button>
+{{attemptsMade}}
+        <button ng-repeat ="button in buttons" id ="button+1"class="circleButton" ng-click="changeBallColor(button+1)" onclick="ChgColor()" >
+            {{button+1}}
+        </button>
+    </div>
+ 
+    <script>
+
+        function ChgColor(btn,pos){
+            alert("hey in chgcolors"+btn+pos)
+            if(btn<pos){
+                alert("in done")
+                btn.style.background = "red";
+            }
+        }
+        angular.module("slider",[]).controller("controllerA",function($scope){
+            
+            $scope.greenBallsStartPosition = 0;
+             $scope.BlueBallPosition = 0;
+             $scope.numberOfGuesses = 0;
+             $scope.count = 0;
+             $scope.totalGuesses = 15;
+             $scope.guessesReamining = 15;
+             $scope.endGame = false;
+           
+             $scope.attemptsMade =  "Attempts :"+$scope.numberOfGuesses + " gueesses Remaining "+ $scope.guessesReamining; 
+            $scope.addButton = function() {
+       
+    
+       
+   
+        $scope.greenBallsStartPosition = Math.round(Math.floor(Math.random()*48)+3);
+       
+        
+        $scope.BlueBallPosition = $scope.greenBallsStartPosition -1;
+       $scope.count = 0;
+       $scope.numberOfGuesses = 0;
+       $scope.endGame = false;
+     
+    
+       for(var i =1;i<=50;i++){
+           
+           //var div = document.createElement("div");
+           
+             $scope.buttons=[];
+             for(var i =0;i<50;i++){
+                
+                 $scope.buttons.push(i);
+             }
+          //div.appendChild(btn)         
+       }
+       }
+    
+     
+
+    $scope.changeBallColor=function(button){
+       
+        alert(button);
+        button.css({'background-color':'red'})
+        $scope.incrementCount();
+        $scope.checkEndGame(button);
+     ChgColor(button,$scope.BlueBallPosition);
+  
+        
+       
+      
+    }
+    $scope.incrementCount=function(){
+        $scope.numberOfGuesses++; 
+        $scope.guessesReamining --; 
+        alert($scope.numberOfGuesses +" "+$scope.guessesReamining);
+        $scope.attemptsMade =  "Attempts :"+$scope.numberOfGuesses + " gueesses Remaining "+ $scope.guessesReamining; 
+          
+    }
+
+    $scope.checkEndGame=function(btn){
+        alert("inside check");
+      
+        if(btn == $scope.BlueBallPosition){
+            alert("you have won");
+            endGame = true;
+        }
+        if($scope.numberOfGuesses>$scope.totalGuesses-1){
+            alert("reached max");
+            endGame = true
+        }
+        }
+
+          
+
+
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<rzslider rz-slider-model="slider.value"></rzslider>
+	
+	<script >
+		var slider = document.getElementById("myslider");
+		alert(slider.value);
+		var output = document.createElement("h2");
+	
+		slider.oninput = function(){
+			output.textContent = "Slider value is "+this.value;
+			for(var i=1;i<=this.value;i++){
+				var btn = document.createElement("BUTTON");
+				btn.innerHTML = i;
+				btn.addEventListener("click",getButtonId,false);//changes id slider 2
+				output.appendChild(btn);
+			}
+			
+			
+			
+		}
+		document.body.appendChild(output);
+//add this fn
+		function getButtonId(){
+			var id = this.textContent;
+			alert("Buton id "+id+" is clicked!")
+
+		}
+	</script>
+	
+
+</body>
+</html>

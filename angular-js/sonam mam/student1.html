@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-app="modA">
+    <script src="angular.js"></script>
+   
+     
+    <div ng-controller="studentController">
+        <h1>{{"Name = "+name}}</h1>
+        <h1>{{"Roll No. = "+rollNo}}</h1>
+        <h1 ng-style="color">{{"CGPA = "+cgpa}}</h1>
+    </div>
+
+
+    <script>
+        var student = {name:"Jay", rollNo:123, cgpa:9.0}
+        angular.module("modA",[]).controller("studentController",function($scope){
+            $scope.name = student.name
+            $scope.rollNo = student.rollNo
+            $scope.cgpa = student.cgpa
+
+            if(student.cgpa<8){
+                $scope.color = {"color":"red"}
+            }
+            else $scope.color = {"color":"green"}
+        })
+    </script>
+</body>
+</html>
