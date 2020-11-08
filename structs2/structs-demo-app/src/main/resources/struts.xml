@@ -20,6 +20,25 @@
 			<result name="success">welcome1.jsp</result>  
 		</action> 
 		
+		<action name="loginPage">
+		<result>LoginPage.jsp</result>
+		</action>
+		
+		<action name="LoginAuthentication" class="com.techlab.action.LoginAuthentication">
+		<result name="input">LoginPage.jsp</result>
+		<result name="success">success.jsp</result>
+		<result name="failure">failure.jsp</result>
+		</action>
+		
+		<action name="registeruser">
+		<result>register.jsp</result>
+		</action>
+		
+		<action name="register" class="com.techlab.action.RegisterAction">
+		<result name="input">register.jsp</result>
+		<result name="success">registersuccess.jsp </result>
+		</action>
+		
 	
     </package>
 </struts>
