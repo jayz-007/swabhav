@@ -1,5 +1,9 @@
 package com.techlab.action;
 
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ModelDriven;
 import com.techlab.model.Register;
@@ -54,6 +58,7 @@ public class RegisterAction implements Action,ModelDriven<Register> {
 		
 		
 	}
+
 
 
 	

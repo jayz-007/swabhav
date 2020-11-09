@@ -15,6 +15,8 @@ public class Register {
 	}
 	public void setFirstname(String firstname) {
 		this.firstname=firstname;
+		
+		System.out.println("first name set "+ this.firstname);
 	}
 	public void setUsername(String username) {
 		this.username=username;
