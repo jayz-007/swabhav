@@ -13,8 +13,6 @@ import org.apache.struts2.interceptor.SessionAware;
 
 public class LoginService {
 
-	String currentUSer = null;
-	String currentPassword = null;
 	private Map<String, String> userLists = new HashMap<String, String>();
 
 	public LoginService() {
@@ -37,14 +35,7 @@ public class LoginService {
 			}
 		}
 		System.out.println(currentSession);
-		if ( currentSession!=null&& currentSession.getAttribute("password")!=null && currentSession.getAttribute("username")!=null) {
-			System.out.println(currentSession.getAttribute("username"));
-			if (currentSession.getAttribute("username").equals("admin")
-					&& currentSession.getAttribute("password").equals("admin")) {
-				return true;
-			}
-		}
 		return false;
 	}
-
 }
+
