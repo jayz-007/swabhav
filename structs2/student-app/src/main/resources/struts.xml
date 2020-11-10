@@ -18,13 +18,12 @@
 			<result name="failure">index.jsp</result>
 		</action>
 
-		<action name="success">
-			<result type="chain">studentTable</result>
+		<action name="success" class="com.techlab.action.DisplayAction">
+			<result >student.jsp</result>
 		</action>
 
-		<action name="studentTable"
-			class="com.techlab.action.DisplayAction">
-			<result>student.jsp</result>
+		<action name="studentTable">
+			<result type="chain">authenticate</result>
 		</action>
 
 		<action name="authenticateAdd">
@@ -80,7 +79,7 @@
 		<action name="LoginAuthentication"
 			class="com.techlab.action.LoginAuthentication">
 			<result name="input">index.jsp</result>
-			<result name="success" type="chain">authenticate</result>
+			<result name="success" type="redirectAction">studentTable</result>
 		</action>
 		
 		<action name="Logout" class="com.techlab.action.LogoutAction">
