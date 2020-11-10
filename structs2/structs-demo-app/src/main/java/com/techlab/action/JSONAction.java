@@ -6,8 +6,8 @@ public class JSONAction extends ActionSupport {
 	private String id, name;
 
 	public String execute() {
-		id = "1234";
-		name = "abc";
+		id = "101";
+		name = "jay";
 
 		return "success";
 	}

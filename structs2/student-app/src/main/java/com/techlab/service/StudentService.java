@@ -55,5 +55,14 @@ public class StudentService {
 		return null;
 		
 	}
+	
+	public void updateStudent(String id,String name,String gender) {
+		for(Student s : students) {
+			if(s.getId().equals(id)) {
+				s.setName(name);
+				s.setGender(gender);
+			}
+		}
+	}
 
 }

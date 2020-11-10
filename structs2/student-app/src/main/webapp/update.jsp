@@ -9,8 +9,15 @@
 </head>
 <body>
 <h1>this is update</h1>
-<a> value is
-<s:property value="id"/>
+<s:property value="student.id"/>
+<s:form action="updateSuccess">
+<s:textfield value="%{student.name}" label="name" name="updatedName"></s:textfield>
+<s:textfield value="%{student.gender}" label="gender" name="updatedGender"></s:textfield>
+<s:hidden name="updateStudent" value ="%{student.id}"></s:hidden>
+<s:submit value="Edit"></s:submit>
+</s:form>
+<a style="color:red">
+<s:property  value="message"/>
 </a>
 </body>
 </html>
