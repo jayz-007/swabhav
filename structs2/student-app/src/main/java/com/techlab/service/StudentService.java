@@ -13,11 +13,11 @@ public class StudentService {
 
 	public StudentService() {
 		
-		students.add(new Student("jay", "male"));
-		students.add(new Student("vinit", "male"));
-		students.add(new Student("pawan", "male"));
-		students.add(new Student("murtuza", "male"));
-		students.add(new Student("prasad", "male"));
+		students.add(new Student("jay", "male",21,22,9.8));
+		students.add(new Student("vinit", "male",12,22,8.91));
+		students.add(new Student("pawan", "male",23,22,9.2));
+		students.add(new Student("murtuza", "male",16,22,9.4));
+		students.add(new Student("prasad", "male",10,22,8.9));
 	}
 
 	public List<Student> getStudents() {
@@ -56,11 +56,14 @@ public class StudentService {
 		
 	}
 	
-	public void updateStudent(String id,String name,String gender) {
+	public void updateStudent(String id,String name,String gender,int rollno,int age,double cgpa) {
 		for(Student s : students) {
 			if(s.getId().equals(id)) {
 				s.setName(name);
 				s.setGender(gender);
+				s.setAge(age);
+				s.setRollno(rollno);
+				s.setCgpa(cgpa);
 			}
 		}
 	}

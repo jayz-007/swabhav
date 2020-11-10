@@ -6,7 +6,7 @@ import com.techlab.service.StudentService;
 import com.teclab.model.Student;
 
 public class DeleteAction implements Action,ModelDriven<Student> {
-	private Student s = new Student("", "");
+	private Student s = new Student("", "",0,0,0);
 	private String deleteStudent;
 
 	@Override

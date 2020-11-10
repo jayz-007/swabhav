@@ -6,7 +6,7 @@ import com.techlab.service.StudentService;
 import com.teclab.model.Student;
 
 public class AddAction implements Action, ModelDriven<Student> {
-	Student student = new Student("", "");
+	Student student = new Student("", "",0,0,0);
 	private String message;
 
 	@Override
@@ -35,6 +35,15 @@ public class AddAction implements Action, ModelDriven<Student> {
 		if (student.getGender().equals("")) {
 			this.message = "Enter gender";
 			return false;
+		}
+		if(student.getAge().equals("") ) {
+			this.message="Enter age";
+		}
+		if(student.getCgpa().equals("")) {
+			this.message="Enter cgpa";
+		}
+		if(student.getRollno().equals("")) {
+			this.message="Enter rollno";
 		}
 
 		return true;

@@ -8,19 +8,21 @@ import com.teclab.model.Student;
 public class UpdateAction implements Action, ModelDriven<Student> {
 	private String updateStudent;
 	private Student student;
-	private String updatedName,updatedGender;
+	private String updatedName, updatedGender;
+	private int updatedAge, updateRollno;
+	private double updatedCgpa;;
 
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		this.student = new StudentService().getInstance().getStudentById(updateStudent);
-		
+
 		return "success";
 	}
 
 	@Override
 	public Student getModel() {
-		student = new Student("", "");
+		student = new Student("", "", 0, 0, 0);
 		return student;
 	}
 
@@ -32,22 +34,31 @@ public class UpdateAction implements Action, ModelDriven<Student> {
 	public Student getStudent() {
 		return student;
 	}
-	
+
 	public void setUpdatedName(String name) {
-		this.updatedName=name;
-		System.out.println(updatedName);
+		this.updatedName = name;
 	}
-	
+
 	public void setUpdatedGender(String gender) {
-		this.updatedGender=gender;
+		this.updatedGender = gender;
 	}
-	
+
+	public void setUpdatedAge(int age) {
+		this.updatedAge = age;
+	}
+
+	public void setUpdatedRollno(int rollno) {
+		this.updateRollno = rollno;
+	}
+
+	public void setUpdatedCgpa(double cgpa) {
+		this.updatedCgpa = cgpa;
+	}
+
 	public String doUpdate() {
-		new StudentService().getInstance().updateStudent(updateStudent, updatedName, updatedGender);
+		new StudentService().getInstance().updateStudent(updateStudent, updatedName, updatedGender, updateRollno,
+				updatedAge, updatedCgpa);
 		return "success";
 	}
-	
-	
-
 
 }

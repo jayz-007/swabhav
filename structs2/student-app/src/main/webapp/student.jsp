@@ -20,12 +20,19 @@ table, tr, td {
 		<s:submit value="Add Student"></s:submit>
 	</s:form>
 
+	<s:form action="Logout">
+		<s:submit value="Logout"></s:submit>
+	</s:form>
+
 	<table>
 		<thead>
 			<tr>
 				<td>Id</td>
+				<td>Roll no</td>
 				<td>Name</td>
 				<td>Gender</td>
+				<td>age</td>
+				<td>CGPA</td>
 				<td>Update</td>
 				<td>Delete</td>
 			</tr>
@@ -33,16 +40,21 @@ table, tr, td {
 		<s:iterator value="students">
 			<tbody>
 				<tr>
+					
 					<td><s:property value="id" /></td>
+					<td><s:property value="rollno" /></td>
 					<td><s:property value="name" /></td>
 					<td><s:property value="gender" /></td>
+					<td><s:property value="age"/></td>
+					<td><s:property value="cgpa"/></td>
+
 					<td><s:form action="updateStudentPage">
-						<s:hidden name="updateStudent" value="%{id}" ></s:hidden>
+							<s:hidden name="updateStudent" value="%{id}"></s:hidden>
 							<s:submit value="Update"></s:submit>
 						</s:form></td>
 
-					<td><s:form action="deleteStudent" validate="true">
-							<s:hidden name="deleteStudent" value="%{id}" ></s:hidden>
+					<td><s:form action="deleteStudent" method="post">
+							<s:hidden name="deleteStudent" value="%{id}"></s:hidden>
 							<s:submit value="Delete"></s:submit>
 						</s:form></td>
 				</tr>
