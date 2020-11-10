@@ -33,8 +33,12 @@
 		<action name="LoginAuthentication"
 			class="com.techlab.action.LoginAuthentication">
 			<result name="input">LoginPage.jsp</result>
-			<result name="success" type="chain">success</result>
+			<result name="success">success</result>
 			<result name="failure">failure.jsp</result>
+		</action>
+		
+		<action name="success" class="com.techlab.action.DisplayAction">
+		<result name="success"></result>
 		</action>
 
 		<action name="success">
@@ -53,7 +57,11 @@
 			<result name="input">register.jsp</result>
 			<result name="success">registersuccess.jsp </result>
 		</action>
-
+		
+		<action name="getJson" class="com.techlab.action.JSONAction">
+			<result type="json"></result>
+		</action>
+	
 
 	</package>
 </struts>

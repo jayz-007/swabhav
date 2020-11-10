@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" extends="struts-default">
+
+	
+
+		<action name="getAddPage">
+			<result>add.jsp</result>
+		</action>
+
+		<action name="addStudent" class="com.techlab.action.AddAction">
+			<result name="success" type="redirectAction">studentTable</result>
+			<result name="failure">add.jsp</result>
+		</action>
+
+		<action name="studentTable"
+			class="com.techlab.action.DisplayAction">
+			<result>student.jsp</result>
+		</action>
+		
+		<action name="deleteStudent" class="com.techlab.action.DeleteAction">
+		<result name="success" type="redirectAction">studentTable</result>
+		</action>
+		
+		<action name="updateStudentPage" class="com.techlab.action.UpdateAction">
+		<result name="success">update.jsp</result>
+		</action>
+		
+		<action name="updateSuccess"  class="com.techlab.action.UpdateAction">
+		<result type="redirectAction">studentTable</result>
+		</action>
+
+
+
+	</package>
+
+
+</struts>

@@ -34,7 +34,6 @@ public class LoginService {
 
 			}
 		}
-		System.out.println(currentSession);
 		return false;
 	}
 }
