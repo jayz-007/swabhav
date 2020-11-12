@@ -2,48 +2,55 @@ package com.techlab.action;
 
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ModelDriven;
+import com.techlab.service.AddVM;
 import com.techlab.service.StudentService;
+import com.techlab.viewmodel.AddStudentVM;
 import com.teclab.model.Student;
 
-public class AddAction implements Action, ModelDriven<Student> {
-	Student student = new Student("", "",0,0,0);
+public class AddAction implements Action, ModelDriven<AddStudentVM> {
+	private AddStudentVM addStudent = new AddStudentVM();
 	private String message;
 
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		if (doValidation()) {
-			StudentService ss = new StudentService().getInstance();
-			ss.addStudent(student);
-			return "success";
-		}
-		return "failure";
+		
+		return "succcess";
 	}
 
 	@Override
-	public Student getModel() {
+	public AddStudentVM getModel() {
 		// TODO Auto-generated method stub
-		return student;
+		return addStudent;
+	}
+	
+	public String doAdd() {
+		if (doValidation()) {
+			StudentService ss = new StudentService().getInstance();
+			ss.addStudent(new Student(addStudent.getName(), addStudent.getGender(), addStudent.getRollno(), addStudent.getAge(), addStudent.getCgpa()));
+			return "success";
+		}
+		return null;
 	}
 
 	public boolean doValidation() {
-		System.out.println(student.getName()+" "+student.getGender());
-		if (student.getName().equals("")) {
+		System.out.println(addStudent.getName() + " " + addStudent.getGender());
+		if (addStudent.getName().equals("")) {
 			this.message = "Enter name";
 			return false;
 		}
-		if (student.getGender().equals("")) {
+		if (addStudent.getGender().equals("")) {
 			this.message = "Enter gender";
 			return false;
 		}
-		if(student.getAge().equals("") ) {
-			this.message="Enter age";
+		if (String.valueOf(addStudent.getAge()).equals("")) {
+			this.message = "Enter age";
 		}
-		if(student.getCgpa().equals("")) {
-			this.message="Enter cgpa";
+		if (String.valueOf(addStudent.getCgpa()).equals("")) {
+			this.message = "Enter cgpa";
 		}
-		if(student.getRollno().equals("")) {
-			this.message="Enter rollno";
+		if (String.valueOf(addStudent.getRollno()).equals("")) {
+			this.message = "Enter rollno";
 		}
 
 		return true;

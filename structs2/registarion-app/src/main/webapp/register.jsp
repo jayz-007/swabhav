@@ -8,9 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="/student-app/studentTable.action">lets test</a>
+<s:form action="doRegister"  >
+<s:textfield name="name" label="Enter name" id="name"></s:textfield>
+<s:textfield name="message" label="Type message" id="message"></s:textfield>
+<s:submit value="Register"></s:submit>
+
+</s:form>
+
+
 </body>
-<script type="text/javascript">
-window.location.replace("/student-app/studentTable.action")
-</script>
+
+
 </html>

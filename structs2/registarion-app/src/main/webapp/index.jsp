@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="/student-app/studentTable.action">lets test</a>
+<h1> Hello </h1>
+<a href="/registarion-app/getRegisterPage">lets test</a>
 </body>
-<script type="text/javascript">
-window.location.replace("/student-app/studentTable.action")
-</script>
 </html>

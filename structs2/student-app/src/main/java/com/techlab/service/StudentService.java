@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.ArchUtils;
 
+import com.techlab.viewmodel.UpdateVM;
 import com.teclab.model.Student;
 
 public class StudentService {
@@ -39,8 +40,8 @@ public class StudentService {
 	public void deleteStudent(String id) {
 		for(Student s: students) {
 			if(s.getId().equals(id)) {
-				System.out.println("deleted");
 				students.remove(s);
+				break;
 			}
 		}
 	}
@@ -48,8 +49,8 @@ public class StudentService {
 	public Student getStudentById(String id) {
 		for(Student s: students) {
 			if(s.getId().equals(id)) {
-				System.out.println("deleted");
-				return s;
+			return s;
+			
 			}
 		}
 		return null;
@@ -64,6 +65,7 @@ public class StudentService {
 				s.setAge(age);
 				s.setRollno(rollno);
 				s.setCgpa(cgpa);
+				System.out.println("update success");
 			}
 		}
 	}

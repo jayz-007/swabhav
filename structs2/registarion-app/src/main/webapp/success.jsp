@@ -8,9 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="/student-app/studentTable.action">lets test</a>
+<h1>Name is : 
+<s:property value="name"/><br>
+
+message is :
+<s:property value="message"/>
+</h1>
 </body>
-<script type="text/javascript">
-window.location.replace("/student-app/studentTable.action")
-</script>
 </html>

@@ -21,14 +21,12 @@ public class LoginService {
 	}
 
 	public boolean doAuthentication(String username, String password, SessionMap<String, Object> sessiMap) {
-		HttpSession currentSession = ServletActionContext.getRequest().getSession(false);
 
 		if (username!=null &&password!=null) {
 			for (Entry<String, String> user : userLists.entrySet()) {
 
 				if (user.getKey().equals(username) && user.getValue().equals(password)) {
-					sessiMap.put("username", user.getKey());
-					sessiMap.put("password", user.getValue());
+					sessiMap.put("loggedIn", true);
 					return true;
 				}
 

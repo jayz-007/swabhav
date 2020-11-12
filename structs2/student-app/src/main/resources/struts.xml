@@ -22,8 +22,8 @@
 			<result >student.jsp</result>
 		</action>
 
-		<action name="studentTable">
-			<result type="chain">authenticate</result>
+		<action name="studentTable" class="com.techlab.action.DisplayAction">
+			<result >student.jsp</result>
 		</action>
 
 		<action name="authenticateAdd">
@@ -42,7 +42,7 @@
 			<result type="chain">authenticateAdd</result>
 		</action>
 
-		<action name="addStudent" class="com.techlab.action.AddAction">
+		<action name="addStudent" class="com.techlab.action.AddAction" method="doAdd">
 			<result name="success" type="redirectAction">studentTable</result>
 			<result name="failure">add.jsp</result>
 		</action>
@@ -84,6 +84,10 @@
 		
 		<action name="Logout" class="com.techlab.action.LogoutAction">
 		<result name="success"> index.jsp</result>
+		</action>
+		
+		<action name="getLoginPage">
+		<result>login.jsp</result>
 		</action>
 
 

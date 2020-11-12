@@ -22,8 +22,7 @@ public class LogoutAction implements Action, SessionAware {
 	
 	@Override
 	public String execute() throws Exception {
-		sessionMap.put("username", null);
-		sessionMap.put("password", null);
+		sessionMap.put("loggedIn", null);
 		return "success";
 	}
 

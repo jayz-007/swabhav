@@ -1,24 +1,13 @@
-package com.teclab.model;
+package com.techlab.viewmodel;
 
-import java.util.UUID;
 
-public class Student {
+public class AddStudentVM {
+
 	private String name;
 	private String gender;
-	private String id;
 	private int rollNo;
 	private int age;
 	private double cgpa;
-
-	public Student(String name, String gender, int rollno, int age, double cgpa) {
-		// TODO Auto-generated constructor stu
-		this.name = name;
-		this.gender = gender;
-		this.id = UUID.randomUUID().toString();
-		this.rollNo = rollno;
-		this.age = age;
-		this.cgpa = cgpa;
-	}
 
 	public void setName(String name) {
 		this.name = name;
@@ -34,10 +23,6 @@ public class Student {
 
 	public String getGender() {
 		return this.gender;
-	}
-
-	public String getId() {
-		return id;
 	}
 
 	public double getCgpa() {
