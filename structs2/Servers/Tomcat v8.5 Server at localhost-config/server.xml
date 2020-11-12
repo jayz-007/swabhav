@@ -153,7 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="student-app" path="/student-app" reloadable="true" source="org.eclipse.jst.j2ee.server:student-app"/><Context docBase="registarion-app" path="/registarion-app" reloadable="true" source="org.eclipse.jst.j2ee.server:registarion-app"/></Host>
+      <Context docBase="student-app" path="/student-app" reloadable="true" source="org.eclipse.jst.j2ee.server:student-app"/><Context docBase="registarion-app" path="/registarion-app" reloadable="true" source="org.eclipse.jst.j2ee.server:registarion-app"/><Context docBase="employee-management-system-app" path="/employee-management-system-app" reloadable="true" source="org.eclipse.jst.j2ee.server:employee-management-system-app"/><Context docBase="struts-email-app" path="/struts-email-app" reloadable="true" source="org.eclipse.jst.j2ee.server:struts-email-app"/><Context docBase="JSON-app1" path="/JSON-app1" reloadable="true" source="org.eclipse.jst.j2ee.server:JSON-app1"/><Context docBase="spring-strut-demo-app" path="/spring-strut-demo-app" reloadable="true" source="org.eclipse.jst.j2ee.server:spring-strut-demo-app"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@taglib prefix="s" uri="/struts-tags" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Name is : 
-<s:property value="name"/><br>
-
-message is :
-<s:property value="message"/>
-</h1>
+	<h1>Email Sent Successfully to</h1>
+	<s:property value="to"></s:property>
 </body>
 </html>

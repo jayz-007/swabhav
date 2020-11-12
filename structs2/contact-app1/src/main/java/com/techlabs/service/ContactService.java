@@ -51,7 +51,6 @@ public class ContactService {
 			e.printStackTrace();
 		}
 
-		return contacts;
 	}
 
 	public void updateContact(String fname, String lname, String phone, String email) {
