@@ -1,0 +1,15 @@
+<p>student works!</p>
+<button (click)="LoadStudent()">LoadStudent</button>
+<div>
+{{Student.name}}
+{{Student.cgpa}}
+{{Student.rollNo}}
+<img [src]="Image">
+</div>
+<button (click)="LoadStudents()">LoadStudents</button>
+<h1 *ngFor="let obj of Students">
+{{obj.name}}<br>
+{{obj.rollNo}}<br>
+{{obj.cgpa}}<br>
+
+</h1>

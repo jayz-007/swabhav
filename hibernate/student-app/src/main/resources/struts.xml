@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" extends="struts-default">
+			<interceptors>
+			<interceptor name="autinterceptor"
+				class="com.techlab.interceptors.AuthInterceptor"></interceptor>
+		</interceptors>
+
+		<action name="authenticate">
+			<interceptor-ref name="autinterceptor">
+			</interceptor-ref>
+			<result name="success" type="chain">success</result>
+			<result name="failure">index.jsp</result>
+		</action>
+
+		<action name="success" class="com.techlab.action.DisplayAction">
+			<result >student.jsp</result>
+		</action>
+
+		<action name="studentTable" class="com.techlab.action.DisplayAction">
+			<result >student.jsp</result>
+		</action>
+
+		<action name="authenticateAdd">
+			<interceptor-ref name="autinterceptor">
+			</interceptor-ref>
+			<result name="success" type="chain">authAdd</result>
+			<result name="failure">index.jsp</result>
+		</action>
+
+		<action name="authAdd">
+			<result>add.jsp</result>
+		</action>
+
+
+		<action name="getAddPage">
+			<result type="chain">authenticateAdd</result>
+		</action>
+
+		<action name="addStudent" class="com.techlab.action.AddAction" method="doAdd">
+			<result name="success" type="redirectAction">studentTable</result>
+			<result name="failure">add.jsp</result>
+		</action>
+
+
+		<action name="deleteStudent"
+			class="com.techlab.action.DeleteAction">
+			<result name="success" type="redirectAction">studentTable</result>
+		</action>
+
+		<action name="updateStudentPage">
+		<result type="chain">authenticateUpdate</result>
+		</action>
+
+		<action name="authenticateUpdate">
+			<interceptor-ref name="autinterceptor">
+			</interceptor-ref>
+			<result name="success" type="chain">authUpdate</result>
+			<result name="failure">index.jsp</result>
+		</action>
+
+		<action name="authUpdate"
+			class="com.techlab.action.UpdateAction">
+			<result name="success">update.jsp</result>
+		</action>
+
+
+
+		<action name="updateSuccess"
+			class="com.techlab.action.UpdateAction" method="doUpdate">
+			<result type="redirectAction">studentTable</result>
+		</action>
+
+		<action name="LoginAuthentication"
+			class="com.techlab.action.LoginAuthentication">
+			<result name="input">login.jsp</result>
+			<result name="success" type="redirectAction">studentTable</result>
+		</action>
+		
+		<action name="Logout" class="com.techlab.action.LogoutAction">
+		<result name="success"> index.jsp</result>
+		</action>
+		
+		<action name="getLoginPage">
+		<result>login.jsp</result>
+		</action>
+	</package>
+</struts>

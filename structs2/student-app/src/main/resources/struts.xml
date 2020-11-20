@@ -10,6 +10,8 @@
 			<interceptor name="autinterceptor"
 				class="com.techlab.interceptors.AuthInterceptor"></interceptor>
 		</interceptors>
+		
+		
 
 		<action name="authenticate">
 			<interceptor-ref name="autinterceptor">

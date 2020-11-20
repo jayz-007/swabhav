@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app >
-<display-name>student-app</display-name>
-<welcome-file-list>
-<welcome-file>index.jsp</welcome-file>
-</welcome-file-list>
-<servlet>
-<description>
-</description>
-<display-name>HomeController</display-name>
-<servlet-name>HomeController</servlet-name>
-<servlet-class>com.techlab.controller.HomeController</servlet-class>
-</servlet>
-<servlet-mapping>
-<servlet-name>HomeController</servlet-name>
-<url-pattern>/home</url-pattern>
-</servlet-mapping>
+<web-app>
+	<display-name>student-app</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<description>
+		</description>
+		<display-name>HomeController</display-name>
+		<servlet-name>HomeController</servlet-name>
+		<servlet-class>com.techlab.controller.HomeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HomeController</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
 </web-app>
