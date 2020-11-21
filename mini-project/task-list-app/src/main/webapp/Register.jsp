@@ -26,7 +26,7 @@
 	<script type="text/javascript">
 	$(document).ready(function (){
 	    validate();
-	    $('#firstname, #lastname, #password ,email,username,confirmPassword').change(validate);
+	    $('#firstname, #lastname, #password ,#email,#username,#confirmPassword').change(validate);
 	});
 
 	function validate(){

@@ -23,6 +23,7 @@ public class LogoutAction implements Action, SessionAware {
 	@Override
 	public String execute() throws Exception {
 		sessionMap.put("loggedIn", null);
+		sessionMap.put("isAdmin", null);
 		return "success";
 	}
 

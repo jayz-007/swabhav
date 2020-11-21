@@ -19,7 +19,9 @@
 
 		<action name="authUser">
 			<interceptor-ref name="autinterceptor"></interceptor-ref>
-			<result  type="chain" name="success">authUserSuccess</result>
+			<result  type="chain" name="admin">authUserSuccess</result>
+			<result  type="chain" name="user">authtaskDisplaySuccess</result>
+			
 			<result name="failure">/WEB-INF/index.jsp</result>
 		</action>
 
@@ -37,7 +39,8 @@
 
 		<action name="authgetUserAddPage">
 			<interceptor-ref name="autinterceptor"></interceptor-ref>
-			<result name="success" type="chain">authgetUserAddPageSuccess</result>
+			<result name="admin" type="chain">authgetUserAddPageSuccess</result>
+			<result  type="chain" name="user">authtaskDisplay</result>
 			<result name="failure">/WEB-INF/index.jsp</result>
 		</action>
 
@@ -54,8 +57,9 @@
 
 		<action name="authgetUserUpdatePage">
 			<interceptor-ref name="autinterceptor"></interceptor-ref>
-			<result type="chain" name="success">authgetUserUpdatePageSuccess
+			<result type="chain" name="admin">authgetUserUpdatePageSuccess
 			</result>
+			<result  type="chain" name="user">authtaskDisplay</result>
 			<result name="failure">/WEB-INF/index.jsp</result>
 		</action>
 
@@ -78,12 +82,17 @@
 			class="com.techlab.action.DeleteUserAction">
 			<result name="success" type="redirectAction">userDisplay</result>
 		</action>
+		
+		<action name="blockUser" class="com.techlab.action.BlockUserAction" method="doBlockUnblockUser">
+		<result name="success" type="redirectAction">userDisplay</result>
+		</action>
 
 		<!-- Task action -->
 
 		<action name="authtaskDisplay">
 			<interceptor-ref name="autinterceptor"></interceptor-ref>
-			<result name="success" type="chain">authtaskDisplaySuccess</result>
+			<result  type="chain" name="admin">authtaskDisplaySuccess</result>
+			<result  type="chain" name="user">authtaskDisplaySuccess</result>
 			<result name="failure">/WEB-INF/index.jsp</result>
 		</action>
 
@@ -98,7 +107,8 @@
 
 		<action name="authgetTaskAddPage">
 			<interceptor-ref name="autinterceptor"></interceptor-ref>
-			<result name="success" type="chain">authgetTaskAddPageSuccess</result>
+				<result name="admin" type="chain">authgetTaskAddPageSuccess</result>
+			<result name="user" type="chain">authgetTaskAddPageSuccess</result>
 			<result name="failure">/WEB-INF/index.jsp</result>
 		</action>
 
@@ -120,7 +130,9 @@
 
 		<action name="authgetTaskUpdatePage">
 			<interceptor-ref name="autinterceptor"></interceptor-ref>
-			<result name="success" type="chain">authgetTaskUpdatePageSuccess
+			<result name="user" type="chain">authgetTaskUpdatePageSuccess
+			</result>
+			<result name="admin" type="chain">authgetTaskUpdatePageSuccess
 			</result>
 			<result name="failure">/WEB-INF/index.jsp</result>
 		</action>
@@ -154,7 +166,8 @@
 		<!-- Subtask action -->
 		<action name="authSubtasksDisplay">
 			<interceptor-ref name="autinterceptor"></interceptor-ref>
-			<result type="chain" name="success">SubtasksDisplaySuccess</result>
+			<result type="chain" name="admin">SubtasksDisplaySuccess</result>
+			<result type="chain" name="user">SubtasksDisplaySuccess</result>
 			<result name="failure">/WEB-INF/index.jsp</result>
 		</action>
 
@@ -169,7 +182,9 @@
 
 		<action name="authgetSubTaskAddPage">
 			<interceptor-ref name="autinterceptor"></interceptor-ref>
-			<result type="chain" name="success">authgetSubTaskAddPageSuccess
+			<result type="chain" name="admin">authgetSubTaskAddPageSuccess
+			</result>
+			<result type="chain" name="user">authgetSubTaskAddPageSuccess
 			</result>
 			<result name="failure">/WEB-INF/index.jsp</result>
 		</action>
@@ -191,7 +206,8 @@
 		
 		<action name="authgetSubTaskUpdatePage">
 			<interceptor-ref name="autinterceptor"></interceptor-ref>
-			<result type="chain" name="success">authgetSubTaskUpdatePageSuccess</result>
+			<result type="chain" name="admin">authgetSubTaskUpdatePageSuccess</result>
+			<result type="chain" name="user">authgetSubTaskUpdatePageSuccess</result>
 			<result name="failure">/WEB-INF/index.jsp</result>
 		</action>
 		
@@ -242,7 +258,9 @@
 		<action name="LoginAuthentication"
 			class="com.techlab.action.LoginAuthentication">
 			<result name="input">login.jsp</result>
-			<result name="success" type="redirectAction">userDisplay</result>
+			<result name="admin" type="redirectAction">userDisplay</result>
+			<result name="user" type="redirectAction">tasksDisplay</result>
+			<result name="blocked">blocked.jsp</result>
 		</action>
 		
 		<action name="Logout" class="com.techlab.action.LogoutAction">

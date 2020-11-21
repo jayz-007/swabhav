@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import com.techlab.entity.Task;
 import com.techlab.entity.User;
+import com.techlab.service.CurrentUserService;
 import com.techlab.viewmodel.TaskUpdateVM;
 
 @Repository
@@ -66,12 +67,12 @@ public class TaskRepository {
 		System.out.println(user+" is user");
 		addTask.setUser(user);
 		factory.getCurrentSession().save(addTask);
-		user.getTask().add(addTask);
 
 	}
 	
 	public void updateTask(TaskUpdateVM taskUpdateInfo,String id) {
 		System.out.println(id +"is id");
+		
 		Task currentTask = searchTask(id);
 		currentTask.setDate(taskUpdateInfo.getDate());
 		currentTask.setDone(taskUpdateInfo.getDone());
@@ -79,6 +80,8 @@ public class TaskRepository {
 		currentTask.setTitle(taskUpdateInfo.getTitle());
 
 		factory.getCurrentSession().update(currentTask);
+		
+		
 		
 	}
 

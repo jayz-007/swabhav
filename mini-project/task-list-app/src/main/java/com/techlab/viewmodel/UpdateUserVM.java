@@ -11,6 +11,7 @@ public class UpdateUserVM {
 	private String email;
 	private String username;
 	private String password;
+	private boolean blocked;
 	
 	private Set<Task> task= new HashSet<Task>();
 	
@@ -52,6 +53,14 @@ public class UpdateUserVM {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public void setBlocked(boolean blocked) {
+		this.blocked = blocked;
+	}
+	
+	public boolean getBlocked() {
+		return blocked;
 	}
 
 }

@@ -15,9 +15,14 @@ public class AuthInterceptor extends AbstractInterceptor{
 	public String intercept(ActionInvocation invocation) throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession currentSession = ServletActionContext.getRequest().getSession(false);
-		if ( currentSession!=null&& currentSession.getAttribute("loggedIn")!=null && currentSession.getAttribute("loggedIn").equals(true) ) {
+		if ( currentSession!=null&& currentSession.getAttribute("loggedIn")!=null && currentSession.getAttribute("loggedIn").equals(true) && currentSession.getAttribute("isAdmin").equals(true)) {
 			System.out.println(currentSession.getAttribute("username")+"is username");
-				return "success";
+				return "admin";
+			}
+		
+		if ( currentSession!=null&& currentSession.getAttribute("loggedIn")!=null && currentSession.getAttribute("loggedIn").equals(true) && currentSession.getAttribute("isAdmin").equals(false)) {
+			System.out.println(currentSession.getAttribute("username")+"is username");
+				return "user";
 			}
 		return "failure";
 	}

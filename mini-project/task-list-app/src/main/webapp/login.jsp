@@ -11,10 +11,11 @@
 
 <s:form action="LoginAuthentication">
 
-		<s:textfield name="username" placeholder="Enter Username">
+		<s:textfield name="username" placeholder="Enter Username" label="Enter Username">
 		</s:textfield>
-		<s:password placeholder="Enter Password" name="password">
+		<s:password placeholder="Enter Password" name="password" label="Enter password">
 		</s:password>
+		<s:checkbox name="isAdmin"></s:checkbox>
 		<s:submit value="login" ></s:submit>
 		
 	</s:form>

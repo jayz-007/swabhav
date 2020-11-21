@@ -56,7 +56,8 @@ public class UserRepository {
 	}
 
 	public User searchUser(String id) {
-		//getUsers();//orginal text
+		// getUsers();//orginal text
+		getUsers();
 		System.out.println(id);
 		for (User userInfo : users) {
 			if (userInfo.getId().toString().equals(id)) {
@@ -67,7 +68,23 @@ public class UserRepository {
 		return null;
 	}
 
-	public void addUser(String firstName, String lastName, String email, String usermame, String password) throws SecurityException, RollbackException, HeuristicMixedException, HeuristicRollbackException, SystemException {
+	public User searchUserByUserName(String username) {
+		// getUsers();//orginal text
+		getUsers();
+		System.out.println(username);
+		for (User userInfo : users) {
+			if (userInfo.getUsername().equals(username)) {
+				System.out.println("found suer");
+				return userInfo;
+
+			}
+		}
+		return null;
+	}
+
+	public void addUser(String firstName, String lastName, String email, String usermame, String password)
+			throws SecurityException, RollbackException, HeuristicMixedException, HeuristicRollbackException,
+			SystemException {
 		User addUser = new User();
 		addUser.setEmail(email);
 		addUser.setFirstName(firstName);
@@ -76,24 +93,25 @@ public class UserRepository {
 		addUser.setPassword(password);
 		addUser.setUsermame(usermame);
 		System.out.println(addUser);
-		
-		
-		
+
 		factory.getCurrentSession().save(addUser);
 
 	}
 
-	public void updateUser(UpdateUserVM userUpdateInfo,String updateUser) {
-		
+	public void updateUser(UpdateUserVM userUpdateInfo, String updateUser) {
+
 		User currentUser = searchUser(updateUser);
-		
+
 		currentUser.setEmail(userUpdateInfo.getEmail());
 		currentUser.setFirstName(userUpdateInfo.getFirstname());
 		currentUser.setLastName(userUpdateInfo.getLastname());
 		currentUser.setPassword(userUpdateInfo.getPassword());
 		currentUser.setTask(userUpdateInfo.getTask());
+		currentUser.setBlocked(userUpdateInfo.getBlocked());
 
 		factory.getCurrentSession().update(currentUser);
+		
+		System.out.println("blocked user  success"+ currentUser.getBlocked());
 
 	}
 

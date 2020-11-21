@@ -21,6 +21,7 @@ public class Task {
 	private String date;
 	private boolean done;
 	
+	
 	@ManyToOne
 	@JoinColumn 
 	private User user;
@@ -79,5 +80,7 @@ public class Task {
 		this.done = done;
 		System.out.println("insdie set "+done);
 	}
+	
+	
 
 }

@@ -12,9 +12,11 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.techlab.entity.User;
+
 @Service
 public class LoginService {
 
@@ -26,27 +28,35 @@ public class LoginService {
 		 * UserService().getUsers(); System.out.println(users.size()+" is size");
 		 * for(User user : users) { userLists.put(user.getUsername(),
 		 * user.getPassword()); }
-		 */ 
+		 */
+
 	}
 
-	public boolean doAuthentication(String username, String password, SessionMap<String, Object> sessiMap) {
+	public boolean doAuthentication(String username, String password, SessionMap<String, Object> sessiMap,boolean isAdmin) {
 
 		if (username != null && password != null) {
-			/*
-			 * for (Entry<String, String> user : userLists.entrySet()) {
-			 * 
-			 * if (user.getKey().equals("jay") && user.getValue().equals("jay")) {
-			 *
-			 * 
-			 * } }
-			 */
 
-			if (username.equals("jay") && password.equals("jay")) {
-				 sessiMap.put("loggedIn", true); 
-				return true;
+			for (Entry<String, String> user : userLists.entrySet()) {
+
+				if (user.getKey().equals(username) && user.getValue().equals(password)) {
+					sessiMap.put("loggedIn", true);
+					if(isAdmin) {
+						sessiMap.put("isAdmin", true);
+						
+					}
+					else {
+						sessiMap.put("isAdmin", false);					}
+					return true;
+				}
 			}
-			
+
 		}
 		return false;
+	}
+
+	public void addtoUsersList(List<User> users) {
+		for (User user : users) {
+			userLists.put(user.getUsername(), user.getPassword());
+		}
 	}
 }

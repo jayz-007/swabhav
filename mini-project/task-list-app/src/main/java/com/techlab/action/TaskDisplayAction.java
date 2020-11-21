@@ -60,6 +60,7 @@ public class TaskDisplayAction implements Action {
 		}
 
 		updateTask.setDone(true);
+	
 		tasksvc.updateTask(updateTask, id);
 
 		return "success";
