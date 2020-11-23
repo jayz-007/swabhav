@@ -5,19 +5,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Task List App </title>
+<title>Task List App</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style >
+.col-xl{
+padding:150px;
+background-color: 	 #a6a6a6;
+top: 100px;
+ border: 30px solid #e6ffec;
+
+
+}
+</style>
 </head>
 <body style="background-color: #e6ffec">
 	<nav class="navbar navbar-dark bg-primary">
+	
 
 		<div>
 			<h1 class="navbar-brand">Home</h1>
 		</div>
+		
+			<h1 class="header" style="color:white">Task List App</h1>
+		
 		<div class="form-inline my-2 my-lg-0">
 			<s:form action="getLoginPage" >
 				<s:submit value="Login" class="btn btn-secondary"></s:submit>
@@ -37,7 +51,6 @@
 
 
 </body>
-
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 	crossorigin="anonymous"></script>

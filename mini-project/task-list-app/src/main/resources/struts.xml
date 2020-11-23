@@ -4,6 +4,8 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
+	<constant name="struts.action.excludePattern"
+		value="/botdetectcaptcha" />
 	<package name="main" extends="struts-default">
 
 		<interceptors>
@@ -19,9 +21,9 @@
 
 		<action name="authUser">
 			<interceptor-ref name="autinterceptor"></interceptor-ref>
-			<result  type="chain" name="admin">authUserSuccess</result>
-			<result  type="chain" name="user">authtaskDisplaySuccess</result>
-			
+			<result type="chain" name="admin">authUserSuccess</result>
+			<result type="chain" name="user">authtaskDisplaySuccess</result>
+
 			<result name="failure">/WEB-INF/index.jsp</result>
 		</action>
 
@@ -40,7 +42,7 @@
 		<action name="authgetUserAddPage">
 			<interceptor-ref name="autinterceptor"></interceptor-ref>
 			<result name="admin" type="chain">authgetUserAddPageSuccess</result>
-			<result  type="chain" name="user">authtaskDisplay</result>
+			<result type="chain" name="user">authtaskDisplay</result>
 			<result name="failure">/WEB-INF/index.jsp</result>
 		</action>
 
@@ -59,7 +61,7 @@
 			<interceptor-ref name="autinterceptor"></interceptor-ref>
 			<result type="chain" name="admin">authgetUserUpdatePageSuccess
 			</result>
-			<result  type="chain" name="user">authtaskDisplay</result>
+			<result type="chain" name="user">authtaskDisplay</result>
 			<result name="failure">/WEB-INF/index.jsp</result>
 		</action>
 
@@ -82,17 +84,19 @@
 			class="com.techlab.action.DeleteUserAction">
 			<result name="success" type="redirectAction">userDisplay</result>
 		</action>
-		
-		<action name="blockUser" class="com.techlab.action.BlockUserAction" method="doBlockUnblockUser">
-		<result name="success" type="redirectAction">userDisplay</result>
+
+		<action name="blockUser"
+			class="com.techlab.action.BlockUserAction"
+			method="doBlockUnblockUser">
+			<result name="success" type="redirectAction">userDisplay</result>
 		</action>
 
 		<!-- Task action -->
 
 		<action name="authtaskDisplay">
 			<interceptor-ref name="autinterceptor"></interceptor-ref>
-			<result  type="chain" name="admin">authtaskDisplaySuccess</result>
-			<result  type="chain" name="user">authtaskDisplaySuccess</result>
+			<result type="chain" name="admin">authtaskDisplaySuccess</result>
+			<result type="chain" name="user">authtaskDisplaySuccess</result>
 			<result name="failure">/WEB-INF/index.jsp</result>
 		</action>
 
@@ -107,13 +111,13 @@
 
 		<action name="authgetTaskAddPage">
 			<interceptor-ref name="autinterceptor"></interceptor-ref>
-				<result name="admin" type="chain">authgetTaskAddPageSuccess</result>
+			<result name="admin" type="chain">authgetTaskAddPageSuccess</result>
 			<result name="user" type="chain">authgetTaskAddPageSuccess</result>
 			<result name="failure">/WEB-INF/index.jsp</result>
 		</action>
 
 		<action name="authgetTaskAddPageSuccess">
-			<result >addTask.jsp</result>
+			<result>addTask.jsp</result>
 		</action>
 
 
@@ -203,21 +207,24 @@
 			<result name="success" type="redirectAction">SubtasksDisplay</result>
 			<result name="input">addSubTask.jsp</result>
 		</action>
-		
+
 		<action name="authgetSubTaskUpdatePage">
 			<interceptor-ref name="autinterceptor"></interceptor-ref>
-			<result type="chain" name="admin">authgetSubTaskUpdatePageSuccess</result>
-			<result type="chain" name="user">authgetSubTaskUpdatePageSuccess</result>
+			<result type="chain" name="admin">authgetSubTaskUpdatePageSuccess
+			</result>
+			<result type="chain" name="user">authgetSubTaskUpdatePageSuccess
+			</result>
 			<result name="failure">/WEB-INF/index.jsp</result>
 		</action>
-		
-		<action name="authgetSubTaskUpdatePageSuccess" class="com.techlab.action.SubTaskUpdateAction">
+
+		<action name="authgetSubTaskUpdatePageSuccess"
+			class="com.techlab.action.SubTaskUpdateAction">
 			<result name="success">updateSubTask.jsp</result>
-			</action>
+		</action>
 
 
-		<action name="getSubTaskUpdatePage">		
-		<result type="chain">authgetSubTaskUpdatePage</result>	
+		<action name="getSubTaskUpdatePage">
+			<result type="chain">authgetSubTaskUpdatePage</result>
 		</action>
 
 		<action name="updateSubTask"
@@ -262,9 +269,9 @@
 			<result name="user" type="redirectAction">tasksDisplay</result>
 			<result name="blocked">blocked.jsp</result>
 		</action>
-		
+
 		<action name="Logout" class="com.techlab.action.LogoutAction">
-		<result name="success">/WEB-INF/index.jsp</result>
+			<result name="success">/WEB-INF/index.jsp</result>
 		</action>
 
 

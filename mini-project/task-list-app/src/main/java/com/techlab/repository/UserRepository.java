@@ -81,6 +81,18 @@ public class UserRepository {
 		}
 		return null;
 	}
+	
+	public User searchUserByEmailID(String email) {
+		// getUsers();//orginal text
+		getUsers();
+		for (User userInfo : users) {
+			if (userInfo.getEmail().equals(email)) {
+				return userInfo;
+
+			}
+		}
+		return null;
+	}
 
 	public void addUser(String firstName, String lastName, String email, String usermame, String password)
 			throws SecurityException, RollbackException, HeuristicMixedException, HeuristicRollbackException,

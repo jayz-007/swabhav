@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.captcha.botdetect.web.servlet.Captcha;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ModelDriven;
+import com.techlab.entity.User;
 import com.techlab.service.UserService;
 import com.techlab.viewmodel.AddUserVM;
 
@@ -17,6 +18,9 @@ public class RegisterUserAction implements Action,ModelDriven<AddUserVM> {
 	private UserService userService;
 	private String confirmPasword;
 	private String captchaCode;
+	
+	
+	
 
 	@Override
 	public AddUserVM getModel() {
@@ -41,7 +45,6 @@ public class RegisterUserAction implements Action,ModelDriven<AddUserVM> {
 	}
 
 	public boolean doValidation() {
-		System.out.println("First name is "+addUser.getEmail());
 		if (addUser.getFirstname().equals("")) {
 			this.validationMessage = "Please Enter First Name";
 			return false;
@@ -54,17 +57,34 @@ public class RegisterUserAction implements Action,ModelDriven<AddUserVM> {
 			this.validationMessage = "Please Enter Email";
 			return false;
 		}
+		if (!(addUser.getEmail().contains("@")&& addUser.getEmail().contains(".com"))) {
+			this.validationMessage = "Please Enter valid Email";
+			return false;
+		}
 		if (addUser.getUsername().equals("")) {
 			this.validationMessage = " Please Enter Username ";
 			return false;
 		}
+		User existingUser = userService.getUserByEmail(addUser.getEmail());
+		if(!(existingUser==null)) {
+			this.validationMessage = " Email Id already exists ";
+			return false;
+		}
+		
+		 existingUser = userService.getUserByUserName(addUser.getUsername());
+		if(!(existingUser==null)) {
+			this.validationMessage = " Username  already exists ";
+			return false;
+		}
+		
+		
 		if (addUser.getPassword().equals("")) {
 			this.validationMessage = "Please Enter password";
 			return false;
 		}
 		
 		if(!addUser.getPassword().equals(confirmPasword)) {
-			this.validationMessage ="Password doesn;t match";
+			this.validationMessage ="Password doesn't match";
 			return false;
 		}
 		

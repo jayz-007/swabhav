@@ -32,6 +32,10 @@ public class UserService {
 		return userRepository.searchUser(id);
 	}
 	
+	public User getUserByEmail(String email) {
+		return userRepository.searchUser(email);
+	}
+	
 	public void updateUser(UpdateUserVM userUpdateInfo,String updateUser) {
 		userRepository.updateUser(userUpdateInfo, updateUser);
 	}

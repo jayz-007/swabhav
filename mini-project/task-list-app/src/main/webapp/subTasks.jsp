@@ -22,11 +22,15 @@ background-color:#ffd500;
 	
 
 	<s:form action="getSubTaskAddPage" class="form-inline my-2 my-lg-0" method="get">
+		<div>
+	<a href="/task-list-app/userDisplay.action" class="navbar-brand">Go Home</a>
+	</div>
 
 		<s:submit value="Add" class="btn btn-warning"></s:submit>
 		
 			
 	</s:form>
+	<a href="/task-list-app/userDisplay.action">Home</a>
 	<a class="navbar-brand">Subtasks</a>
 	
 	</nav>

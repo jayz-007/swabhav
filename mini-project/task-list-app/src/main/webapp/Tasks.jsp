@@ -19,9 +19,14 @@ tr:hover {
 </head>
 <body style="background-color: #e6ffec">
 	<nav class="navbar navbar-dark bg-primary">
-	<s:form action="getUserAddPage" method="get">
+	<s:form action="getTaskAddPage" method="get" class="form-inline my-2 my-lg-0">
 		<s:submit value="Add" class="btn btn-warning"></s:submit>
+			<div>
+	<a href="/task-list-app/userDisplay.action" class="navbar-brand">Go Home</a>
+	</div>
 	</s:form>
+
+	
 	
 	<s:form action="Logout">
 		<s:submit value="Logout" class="btn btn-secondary"></s:submit>
